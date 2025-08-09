@@ -2,52 +2,62 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'pill';
   size?: 'sm' | 'md' | 'lg';
   children?: ReactNode;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', size = 'md', children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  ({ className, variant = 'primary', size = 'md', children, style, ...props }, ref) => {
+    const baseStyles = 'inline-flex items-center justify-center font-light tracking-wide tap-highlight transition-all disabled:pointer-events-none disabled:opacity-50';
     
-    const variants = {
-      primary: 'bg-gray-900 text-white hover:bg-gray-800 focus-visible:ring-gray-900',
-      secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:ring-gray-500',
-      outline: 'border border-gray-300 bg-transparent hover:bg-gray-50 focus-visible:ring-gray-500',
-      ghost: 'hover:bg-gray-100 focus-visible:ring-gray-500',
+    const variantStyles = {
+      primary: {
+        backgroundColor: 'var(--text-primary)',
+        color: 'var(--island-background)'
+      },
+      secondary: {
+        backgroundColor: 'var(--island-accent)',
+        color: 'var(--text-primary)'
+      },
+      outline: {
+        backgroundColor: 'transparent',
+        color: 'var(--text-primary)',
+        border: `1px solid var(--text-secondary)`
+      },
+      pill: {
+        backgroundColor: 'var(--island-background)',
+        color: 'var(--text-secondary)',
+        border: `1px solid var(--island-accent)`
+      }
     };
 
     const sizes = {
-      sm: 'h-8 px-3 text-sm',
-      md: 'h-10 px-4 py-2',
-      lg: 'h-12 px-8 text-lg',
+      sm: 'px-4 py-2 text-xs min-h-[36px]',
+      md: 'px-6 py-3 text-sm min-h-[44px]',
+      lg: 'px-8 py-4 text-base min-h-[52px]'
     };
+
+    const radiusClass = variant === 'pill' ? 'radius-pill' : 'radius-sm';
 
     const classes = cn(
       baseStyles,
-      variants[variant],
       sizes[size],
+      radiusClass,
       className
     );
 
-    // asChild機能は使用していないため、コメントアウト
-    // if (asChild && children) {
-    //   const childElement = children as ReactElement;
-    //   if (childElement && childElement.props) {
-    //     return (
-    //       <childElement.type
-    //         {...childElement.props}
-    //         className={cn(classes, childElement.props.className)}
-    //         ref={ref}
-    //       />
-    //     );
-    //   }
-    // }
+    const combinedStyle = {
+      ...variantStyles[variant],
+      transitionDuration: 'var(--duration-fast)',
+      transitionTimingFunction: 'var(--easing)',
+      ...style
+    };
 
     return (
       <button
         className={classes}
+        style={combinedStyle}
         ref={ref}
         {...props}
       >

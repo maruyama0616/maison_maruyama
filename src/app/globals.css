@@ -7,6 +7,33 @@
   --foreground: #2a2a2a;
   --foreground-subtle: #666666;
   --foreground-muted: #a0a0a0;
+  
+  /* Mobile-First Island Design Tokens */
+  --page-background: #F2F1EC;    /* ごく淡いウォームグレー（薄い砂色） */
+  --island-background: #F7F6F2;  /* 島の背景色（わずかに明るいウォームグレー） */
+  --island-accent: #EEEEE8;      /* アクセント色（島色よりほんの少し濃いグレー） */
+  --text-primary: #444444;       /* 濃すぎない濃グレー文字 */
+  --text-secondary: #666666;     /* セカンダリテキスト */
+  --text-muted: #999999;         /* ミュートテキスト */
+  
+  /* Radius Scale System */
+  --radius-xs: 8px;              /* ツールチップ最小限 */
+  --radius-sm: 12px;             /* ボタン・タグ・入力系 */
+  --radius-md: 16px;             /* サムネイル */
+  --radius-lg: 20px;             /* ヘッダー・カード・モーダル（モバイル基準） */
+  --radius-xl: 24px;             /* お知らせバー・シート上部 */
+  --radius-pill: 9999px;         /* アバター・完全丸 */
+  
+  /* Spacing Tokens */
+  --spacing-mobile-margin: 16px; /* 左右の外側余白 */
+  --spacing-header-top: 12px;    /* ヘッダー上部のわずかな空き */
+  --spacing-tap-target: 44px;    /* 最小タップ領域 */
+  
+  /* Animation Tokens */
+  --duration-fast: 0.25s;        /* 高速アニメーション */
+  --duration-normal: 0.3s;       /* 標準アニメーション */
+  --duration-slow: 0.4s;         /* ゆっくりアニメーション */
+  --easing: ease-out;            /* 控えめイージング */
 }
 
 @theme inline {
@@ -122,6 +149,95 @@ body {
   .grid-minimal {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Mobile-First Island Utilities */
+.island-container {
+  background: var(--island-background);
+  border-radius: var(--radius-lg);
+  margin: 0 var(--spacing-mobile-margin);
+}
+
+.radius-xs { border-radius: var(--radius-xs); }
+.radius-sm { border-radius: var(--radius-sm); }
+.radius-md { border-radius: var(--radius-md); }
+.radius-lg { border-radius: var(--radius-lg); }
+.radius-xl { border-radius: var(--radius-xl); }
+.radius-pill { border-radius: var(--radius-pill); }
+
+/* Safe Area Support */
+.safe-area-top {
+  padding-top: max(var(--spacing-header-top), env(safe-area-inset-top));
+}
+
+.safe-area-bottom {
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+.safe-area-sides {
+  padding-left: max(var(--spacing-mobile-margin), env(safe-area-inset-left));
+  padding-right: max(var(--spacing-mobile-margin), env(safe-area-inset-right));
+}
+
+/* Tap Target Utilities */
+.tap-target {
+  min-width: var(--spacing-tap-target);
+  min-height: var(--spacing-tap-target);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image Clipping for Rounded Corners */
+.image-clip-rounded {
+  overflow: hidden;
+}
+
+.image-clip-rounded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animation Utilities */
+.animate-fade-slide-up {
+  animation: fadeSlideUp var(--duration-normal) var(--easing) both;
+}
+
+.animate-fade-slide-down {
+  animation: fadeSlideDown var(--duration-normal) var(--easing) both;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Interaction States */
+.tap-highlight {
+  transition: all var(--duration-fast) var(--easing);
+}
+
+.tap-highlight:active {
+  transform: scale(0.98);
+  opacity: 0.8;
 }
 
 /* Custom utility classes */
