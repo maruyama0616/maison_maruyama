@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MARUYAMA - Official Blog & Website
 
-## Getting Started
+まるやま公式サイト兼ブログ。「Cool Life, Better Work」をコンセプトに、クールで洗練されたライフスタイル、自己成長、効率的な生き方の最適化を発信するWebサイトです。
 
-First, run the development server:
+## 技術スタック
+
+- **Frontend**: Next.js 15 (App Router) + TypeScript
+- **Styling**: Tailwind CSS v4
+- **CMS**: Sanity (Headless CMS)
+- **Hosting**: Vercel
+- **Analytics**: Google Analytics 4
+
+## 主な機能
+
+- ミニマル & モダンなデザイン
+- レスポンシブ対応
+- ブログ機能（カテゴリー・タグ対応）
+- SEO最適化
+- 高速な静的サイト生成
+- Sanity CMSによるコンテンツ管理
+
+## 開発環境のセットアップ
+
+### 1. リポジトリのクローン
+
+```bash
+git clone [repository-url]
+cd maruyama-blog
+```
+
+### 2. 依存関係のインストール
+
+```bash
+npm install
+```
+
+### 3. 環境変数の設定
+
+`.env.local` ファイルを作成し、以下の環境変数を設定してください：
+
+```bash
+# Sanity CMS Configuration
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id_here
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=your_api_token_here
+
+# Google Analytics
+NEXT_PUBLIC_GA_MEASUREMENT_ID=your_ga_id_here
+```
+
+### 4. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 でサイトが表示されます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ビルド & デプロイ
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ローカルビルド
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Vercelでのデプロイ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. GitHubリポジトリをVercelに接続
+2. 環境変数を設定
+3. 自動デプロイが開始されます
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## プロジェクト構成
 
-## Deploy on Vercel
+```
+src/
+├── app/                    # Next.js App Router
+├── components/
+│   ├── layout/            # レイアウトコンポーネント
+│   ├── ui/               # UIコンポーネント
+│   └── blog/             # ブログ関連コンポーネント
+├── lib/                  # ユーティリティ関数
+├── types/                # TypeScript型定義
+└── styles/               # スタイル関連
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 開発フェーズ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [x] 基本環境セットアップ
+- [x] レイアウト & UIコンポーネント作成
+- [x] Sanity CMS設定
+- [ ] ブログ機能実装
+- [ ] SEO最適化
+- [ ] パフォーマンス最適化
+- [ ] 本番デプロイ
+
+## ライセンス
+
+© 2024 Maruyama. All rights reserved.
