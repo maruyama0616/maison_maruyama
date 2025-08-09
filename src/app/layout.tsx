@@ -19,9 +19,12 @@ export const metadata: Metadata = {
   description: "まるやまの公式サイト兼ブログ。Cool Life, Better Work - クールで洗練されたライフスタイル、自己成長、効率的な生き方の最適化を発信します。",
   keywords: "ブログ,ライフハック,キャリア,自己成長,海外生活,クリエイティブ",
   authors: [{ name: "Maruyama" }],
+  metadataBase: new URL('https://maruyama.net'),
   openGraph: {
     title: "MARUYAMA - Cool Life, Better Work",
     description: "クールで洗練されたライフスタイル、自己成長、効率的な生き方の最適化を発信。",
+    url: "https://maruyama.net",
+    siteName: "MARUYAMA",
     type: "website",
     locale: "ja_JP",
   },
@@ -29,6 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MARUYAMA - Cool Life, Better Work",
     description: "クールで洗練されたライフスタイル、自己成長、効率的な生き方の最適化を発信。",
+    site: "@maruyama",
   },
 };
 
