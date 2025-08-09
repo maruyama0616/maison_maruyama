@@ -2,14 +2,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Ultra Minimal */}
-      <section className="w-full py-32">
+      <section className="w-full py-24">
         <div className="container-fixed">
           <div className="text-center fade-in">
             <h1 className="font-serif text-2xl small-caps font-light text-gray-800 mb-4 tracking-wider">
-              MARUYAMA
+              ATELIER
             </h1>
             <p className="font-sans text-xs font-ultra-light text-gray-600 tracking-wide uppercase">
-              ATELIER
+              TOKYO • PARIS
             </p>
           </div>
         </div>
