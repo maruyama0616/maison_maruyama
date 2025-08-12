@@ -9,7 +9,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
-  // Updated: Force re-deploy
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,30 +208,24 @@ const Header = () => {
                 aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
               >
                 <div className="relative w-6 h-6 flex items-center justify-center">
-                  {/* Animated Hamburger to X */}
-                  <div className="relative">
-                    {/* Top Line */}
-                    <div 
-                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
-                        isMenuOpen ? 'rotate-45 translate-y-1.5' : 'rotate-0 translate-y-0'
-                      }`}
-                      style={{ transformOrigin: 'center' }}
-                    ></div>
-                    
-                    {/* Middle Line */}
-                    <div 
-                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out mt-1 ${
-                        isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
-                      }`}
-                    ></div>
-                    
-                    {/* Bottom Line */}
-                    <div 
-                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out mt-1 ${
-                        isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'rotate-0 translate-y-0'
-                      }`}
-                      style={{ transformOrigin: 'center' }}
-                    ></div>
+                  {/* Hamburger Icon */}
+                  <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-0 scale-75' : 'opacity-100 scale-100'
+                  }`}>
+                    <div className="flex flex-col space-y-1">
+                      <div className="w-5 h-0.5 bg-current"></div>
+                      <div className="w-5 h-0.5 bg-current"></div>
+                      <div className="w-5 h-0.5 bg-current"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Close Icon */}
+                  <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+                  }`}>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                   </div>
                 </div>
               </button>
