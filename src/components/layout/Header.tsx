@@ -212,7 +212,7 @@ const Header = () => {
                   <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
                     isMenuOpen ? 'opacity-0 scale-75' : 'opacity-100 scale-100'
                   }`}>
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col gap-1.5">
                       <div className="w-5 h-0.5 bg-current"></div>
                       <div className="w-5 h-0.5 bg-current"></div>
                       <div className="w-5 h-0.5 bg-current"></div>
@@ -329,81 +329,68 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
-      {isMenuOpen && (
-        <>
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/20 z-40 transition-opacity"
-            style={{ transitionDuration: 'var(--duration-normal)' }}
-            onClick={closeMenu}
-          />
-          
-          {/* Drawer Sheet */}
-          <div className="fixed inset-x-0 bottom-0 z-50 safe-area-bottom animate-fade-slide-up"
-               style={{ 
-                 backgroundColor: 'var(--island-background)',
-                 borderTopLeftRadius: 'var(--radius-xl)',
-                 borderTopRightRadius: 'var(--radius-xl)'
-               }}>
-            
-            {/* Drag Handle */}
-            <div className="flex justify-center pt-4 pb-6">
-              <div className="w-12 h-1 radius-pill" style={{ backgroundColor: 'var(--text-muted)' }}></div>
+      {/* Mobile Header-Expanding Menu */}
+      <div className={`md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${
+        isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div 
+          className="island-container mx-4 mt-2"
+          style={{ 
+            backgroundColor: 'var(--island-background)',
+            borderRadius: 'var(--radius-lg)'
+          }}
+        >
+          {/* Menu Content */}
+          <nav className="px-6 py-8 text-center">
+            {/* Categories */}
+            <div className="mb-8">
+              <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
+                  style={{ color: 'var(--text-muted)' }}>
+                Categories
+              </h3>
+              <div className="space-y-6">
+                <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">Health</span>
+                </Link>
+                <Link href="/ambition" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">Ambition</span>
+                </Link>
+                <Link href="/relationship" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">Relationship</span>
+                </Link>
+                <Link href="/money" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">Money</span>
+                </Link>
+              </div>
             </div>
 
-            {/* Menu Content */}
-            <nav className="px-6 pb-8 text-center">
-              {/* Categories */}
-              <div className="mb-8">
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
-                    style={{ color: 'var(--text-muted)' }}>
-                  Categories
-                </h3>
-                <div className="space-y-4">
-                  <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Health</span>
-                  </Link>
-                  <Link href="/ambition" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Ambition</span>
-                  </Link>
-                  <Link href="/relationship" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Relationship</span>
-                  </Link>
-                  <Link href="/money" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Money</span>
-                  </Link>
-                </div>
+            {/* More Links */}
+            <div className="mb-8">
+              <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
+                  style={{ color: 'var(--text-muted)' }}>
+                More
+              </h3>
+              <div className="space-y-6">
+                <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">About</span>
+                </Link>
+                <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                  <span className="text-lg font-light tracking-wide">Misc</span>
+                </Link>
               </div>
+            </div>
 
-              {/* More Links */}
-              <div className="mb-8">
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
-                    style={{ color: 'var(--text-muted)' }}>
-                  More
-                </h3>
-                <div className="space-y-4">
-                  <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">About</span>
-                  </Link>
-                  <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Misc</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Theme Switch */}
-              <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
-                <h3 className="text-xs font-medium tracking-widest uppercase mb-4" 
-                    style={{ color: 'var(--text-muted)' }}>
-                  Theme
-                </h3>
-                <ThemeSwitch />
-              </div>
-            </nav>
-          </div>
-        </>
-      )}
+            {/* Theme Switch */}
+            <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
+              <h3 className="text-xs font-medium tracking-widest uppercase mb-4" 
+                  style={{ color: 'var(--text-muted)' }}>
+                Theme
+              </h3>
+              <ThemeSwitch />
+            </div>
+          </nav>
+        </div>
+      </div>
 
       {/* Header Spacer */}
       <div className={`transition-all duration-500 ease-in-out ${
