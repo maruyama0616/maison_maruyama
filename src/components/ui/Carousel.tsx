@@ -84,17 +84,17 @@ export default function Carousel({ items, autoPlay = true, autoPlayInterval = 50
                 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="mb-2">
-                    <span className="inline-block px-2 py-1 text-xs font-ultra-light tracking-wide uppercase rounded-sm"
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1.5 text-xs font-ultra-light tracking-wide uppercase rounded-sm"
                           style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' }}>
                       {item.category}
                     </span>
                   </div>
-                  <h3 className="font-serif text-lg font-light text-white mb-2 line-clamp-2">
+                  <h3 className="font-serif text-lg md:text-xl font-light text-white mb-3 line-clamp-2 leading-relaxed">
                     {item.title}
                   </h3>
-                  <p className="font-sans text-sm font-light text-white/80 line-clamp-2">
+                  <p className="font-sans text-sm font-light text-white/80 line-clamp-2 leading-relaxed">
                     {item.excerpt}
                   </p>
                 </div>

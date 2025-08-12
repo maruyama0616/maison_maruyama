@@ -40,10 +40,10 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Hero Section - Ultra Minimal */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
           <div className="text-center fade-in">
-            <h1 className="font-serif text-2xl small-caps font-light mb-4 tracking-wider"
+            <h1 className="font-serif text-2xl small-caps font-light text-spacing tracking-wider"
                 style={{ color: 'var(--text-primary)' }}>
               MARUYAMA
             </h1>
@@ -56,9 +56,9 @@ export default function Home() {
       </section>
 
       {/* Popular Posts Carousel */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <h2 className="font-serif text-sm small-caps font-light mb-16 text-center tracking-wider"
+          <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             POPULAR POSTS
           </h2>
@@ -69,19 +69,19 @@ export default function Home() {
       </section>
 
       {/* Category Navigation */}
-      <section className="w-full py-32">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <h2 className="font-serif text-sm small-caps font-light mb-16 text-center tracking-wider"
+          <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             CATEGORIES
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
             <Link href="/health" className="group">
-              <div className="aspect-[4/5] image-soft mb-6 hover-subtle transition-opacity image-clip-rounded radius-lg"
+              <div className="aspect-[4/5] image-soft mb-6 md:mb-8 hover-subtle transition-opacity image-clip-rounded radius-lg"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center p-6">
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                    <div className="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
                       <svg className="w-8 h-8" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
@@ -93,12 +93,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="text-center">
-                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-1"
+              <div className="text-center px-2">
+                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-3"
                     style={{ color: 'var(--text-primary)' }}>
                   健康とウェルネス
                 </h3>
-                <p className="font-sans text-xs font-ultra-light"
+                <p className="font-sans text-xs font-ultra-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   健康的なライフスタイル
                 </p>
@@ -106,11 +106,11 @@ export default function Home() {
             </Link>
 
             <Link href="/ambition" className="group">
-              <div className="aspect-[4/5] image-soft mb-6 hover-subtle transition-opacity image-clip-rounded radius-lg"
+              <div className="aspect-[4/5] image-soft mb-6 md:mb-8 hover-subtle transition-opacity image-clip-rounded radius-lg"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center p-6">
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                    <div className="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
                       <svg className="w-8 h-8" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
@@ -122,12 +122,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="text-center">
-                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-1"
+              <div className="text-center px-2">
+                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-3"
                     style={{ color: 'var(--text-primary)' }}>
                   目標と成長
                 </h3>
-                <p className="font-sans text-xs font-ultra-light"
+                <p className="font-sans text-xs font-ultra-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   キャリアと自己実現
                 </p>
@@ -135,11 +135,11 @@ export default function Home() {
             </Link>
 
             <Link href="/relationship" className="group">
-              <div className="aspect-[4/5] image-soft mb-6 hover-subtle transition-opacity image-clip-rounded radius-lg"
+              <div className="aspect-[4/5] image-soft mb-6 md:mb-8 hover-subtle transition-opacity image-clip-rounded radius-lg"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center p-6">
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                    <div className="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
                       <svg className="w-8 h-8" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
@@ -151,12 +151,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="text-center">
-                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-1"
+              <div className="text-center px-2">
+                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-3"
                     style={{ color: 'var(--text-primary)' }}>
                   人間関係
                 </h3>
-                <p className="font-sans text-xs font-ultra-light"
+                <p className="font-sans text-xs font-ultra-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   コミュニケーションと絆
                 </p>
@@ -164,11 +164,11 @@ export default function Home() {
             </Link>
 
             <Link href="/money" className="group">
-              <div className="aspect-[4/5] image-soft mb-6 hover-subtle transition-opacity image-clip-rounded radius-lg"
+              <div className="aspect-[4/5] image-soft mb-6 md:mb-8 hover-subtle transition-opacity image-clip-rounded radius-lg"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center p-6">
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                    <div className="w-12 h-12 mx-auto mb-6 flex items-center justify-center">
                       <svg className="w-8 h-8" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -180,12 +180,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="text-center">
-                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-1"
+              <div className="text-center px-2">
+                <h3 className="font-sans text-xs font-ultra-light tracking-wide uppercase mb-3"
                     style={{ color: 'var(--text-primary)' }}>
                   お金と投資
                 </h3>
-                <p className="font-sans text-xs font-ultra-light"
+                <p className="font-sans text-xs font-ultra-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   財務管理と資産形成
                 </p>
@@ -196,22 +196,22 @@ export default function Home() {
       </section>
 
       {/* About & Misc Navigation */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <Link href="/about" className="group">
-              <div className="radius-lg p-12 text-center hover-subtle transition-opacity"
+              <div className="radius-lg card-spacing text-center hover-subtle transition-opacity"
                    style={{ backgroundColor: 'var(--island-background)' }}>
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
                   <svg className="w-12 h-12" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-sm small-caps font-light mb-4 tracking-wider"
+                <h3 className="font-serif text-sm small-caps font-light mb-6 tracking-wider"
                     style={{ color: 'var(--text-primary)' }}>
                   ABOUT / CONCEPT
                 </h3>
-                <p className="font-sans text-xs font-light"
+                <p className="font-sans text-xs font-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   このサイトのコンセプトと<br />
                   私について
@@ -220,18 +220,18 @@ export default function Home() {
             </Link>
 
             <Link href="/misc" className="group">
-              <div className="radius-lg p-12 text-center hover-subtle transition-opacity"
+              <div className="radius-lg card-spacing text-center hover-subtle transition-opacity"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
-                <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
                   <svg className="w-12 h-12" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-sm small-caps font-light mb-4 tracking-wider"
+                <h3 className="font-serif text-sm small-caps font-light mb-6 tracking-wider"
                     style={{ color: 'var(--text-primary)' }}>
                   MISC / JOURNAL
                 </h3>
-                <p className="font-sans text-xs font-light"
+                <p className="font-sans text-xs font-light leading-relaxed"
                    style={{ color: 'var(--text-secondary)' }}>
                   日記や気づき、<br />
                   趣味の記録など
