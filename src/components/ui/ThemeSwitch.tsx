@@ -24,8 +24,7 @@ export default function ThemeSwitch({ className = '' }: ThemeSwitchProps) {
         onClick={toggleTheme}
         className="relative w-12 h-6 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2"
         style={{
-          backgroundColor: theme === 'dark' ? 'var(--text-primary)' : 'var(--island-accent)',
-          focusRingColor: 'var(--text-muted)'
+          backgroundColor: theme === 'dark' ? 'var(--text-primary)' : 'var(--island-accent)'
         }}
         aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       >
