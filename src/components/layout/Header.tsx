@@ -40,11 +40,11 @@ const Header = () => {
                   color: 'var(--text-primary)' 
                 }}
               >
-                Maison Maruyama
+                RYUNOSUKE MARUYAMA
               </div>
               <div className="px-4 py-2 text-sm font-medium tracking-wide tap-highlight cursor-pointer"
                    style={{ color: 'var(--text-secondary)' }}>
-                MM6
+                TOKYO
               </div>
             </div>
 
@@ -67,7 +67,7 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    Maison Maruyama PARIS
+                    RYUNOSUKE MARUYAMA TOKYO
                   </span>
                 </Link>
               </div>
@@ -89,7 +89,7 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    MM
+                    RM
                   </span>
                 </Link>
               </div>
@@ -97,26 +97,30 @@ const Header = () => {
 
             {/* Right - Desktop Menu Links */}
             <nav className="flex items-center space-x-8">
-              <Link href="/womens" className="text-sm font-light tracking-wide tap-highlight" 
+              <Link href="/health" className="text-sm font-light tracking-wide tap-highlight" 
                     style={{ color: 'var(--text-primary)' }}>
-                ウィメンズ
+                Health
               </Link>
-              <Link href="/mens" className="text-sm font-light tracking-wide tap-highlight" 
+              <Link href="/ambition" className="text-sm font-light tracking-wide tap-highlight" 
                     style={{ color: 'var(--text-primary)' }}>
-                メンズ
+                Ambition
               </Link>
-              <Link href="/shows" className="text-sm font-light tracking-wide tap-highlight" 
+              <Link href="/relationship" className="text-sm font-light tracking-wide tap-highlight" 
                     style={{ color: 'var(--text-primary)' }}>
-                Shows
+                Relationship
               </Link>
-              <button className="text-sm font-light tap-highlight" 
+              <Link href="/money" className="text-sm font-light tracking-wide tap-highlight" 
+                    style={{ color: 'var(--text-primary)' }}>
+                Money
+              </Link>
+              <Link href="/about" className="text-sm font-light tap-highlight" 
                       style={{ color: 'var(--text-secondary)' }}>
-                Search
-              </button>
-              <button className="text-sm font-light tap-highlight relative" 
+                About
+              </Link>
+              <Link href="/misc" className="text-sm font-light tap-highlight" 
                       style={{ color: 'var(--text-secondary)' }}>
-                Cart (0)
-              </button>
+                Misc
+              </Link>
             </nav>
           </div>
         </div>
@@ -167,13 +171,13 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    Maison Maruyama
+                    RYUNOSUKE MARUYAMA
                   </span>
                   <span 
                     className="text-xs tracking-widest opacity-75"
                     style={{ color: 'var(--text-secondary)' }}
                   >
-                    PARIS
+                    TOKYO
                   </span>
                 </Link>
               </div>
@@ -196,7 +200,7 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    MM
+                    RM
                   </span>
                 </Link>
               </div>
@@ -263,34 +267,34 @@ const Header = () => {
             <nav className="px-6 pb-8 space-y-6">
               <div className="space-y-4">
                 <h3 className="text-sm font-medium tracking-wide" style={{ color: 'var(--text-secondary)' }}>
-                  COLLECTIONS
+                  CATEGORIES
                 </h3>
                 <div className="space-y-3">
-                  <Link href="/womens" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">ウィメンズ</span>
+                  <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                    <span className="text-lg font-light tracking-wide">Health</span>
                   </Link>
-                  <Link href="/mens" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">メンズ</span>
+                  <Link href="/ambition" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                    <span className="text-lg font-light tracking-wide">Ambition</span>
                   </Link>
-                  <Link href="/allgender" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">オールジェンダー</span>
+                  <Link href="/relationship" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                    <span className="text-lg font-light tracking-wide">Relationship</span>
+                  </Link>
+                  <Link href="/money" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                    <span className="text-lg font-light tracking-wide">Money</span>
                   </Link>
                 </div>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-sm font-medium tracking-wide" style={{ color: 'var(--text-secondary)' }}>
-                  EXPERIENCE
+                  MORE
                 </h3>
                 <div className="space-y-3">
-                  <Link href="/shows" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Shows</span>
-                  </Link>
-                  <Link href="/editorial" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                    <span className="text-lg font-light tracking-wide">Editorial</span>
-                  </Link>
                   <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                     <span className="text-lg font-light tracking-wide">About</span>
+                  </Link>
+                  <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                    <span className="text-lg font-light tracking-wide">Misc</span>
                   </Link>
                 </div>
               </div>
