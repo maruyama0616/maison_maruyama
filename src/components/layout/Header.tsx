@@ -70,7 +70,7 @@ const Header = () => {
                     color: 'var(--text-primary)' 
                   }}
                 >
-                  RYUNOSUKE MARUYAMA
+                  MARUYAMA
                 </div>
                 <div className="px-4 py-2 text-sm font-medium tracking-wide tap-highlight cursor-pointer"
                      style={{ color: 'var(--text-secondary)' }}>
@@ -97,7 +97,7 @@ const Header = () => {
                         fontFamily: 'var(--font-serif)' 
                       }}
                     >
-                      RYUNOSUKE MARUYAMA TOKYO
+                      MARUYAMA
                     </span>
                   </Link>
                 </div>
@@ -119,7 +119,7 @@ const Header = () => {
                         fontFamily: 'var(--font-serif)' 
                       }}
                     >
-                      RM
+                      M
                     </span>
                   </Link>
                 </div>
@@ -203,13 +203,37 @@ const Header = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={toggleMenu}
-                className="tap-target tap-highlight"
+                className="tap-target tap-highlight relative"
                 style={{ color: 'var(--text-primary)' }}
-                aria-label="メニューを開く"
+                aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                <div className="relative w-6 h-6 flex items-center justify-center">
+                  {/* Animated Hamburger to X */}
+                  <div className="relative">
+                    {/* Top Line */}
+                    <div 
+                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+                        isMenuOpen ? 'rotate-45 translate-y-1.5' : 'rotate-0 translate-y-0'
+                      }`}
+                      style={{ transformOrigin: 'center' }}
+                    ></div>
+                    
+                    {/* Middle Line */}
+                    <div 
+                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out mt-1 ${
+                        isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+                      }`}
+                    ></div>
+                    
+                    {/* Bottom Line */}
+                    <div 
+                      className={`w-5 h-0.5 bg-current transform transition-all duration-300 ease-in-out mt-1 ${
+                        isMenuOpen ? '-rotate-45 -translate-y-1.5' : 'rotate-0 translate-y-0'
+                      }`}
+                      style={{ transformOrigin: 'center' }}
+                    ></div>
+                  </div>
+                </div>
               </button>
               <button
                 className="tap-target tap-highlight"
@@ -242,7 +266,7 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    RYUNOSUKE MARUYAMA
+                    MARUYAMA
                   </span>
                   <span 
                     className="text-xs tracking-widest opacity-75"
@@ -271,7 +295,7 @@ const Header = () => {
                       fontFamily: 'var(--font-serif)' 
                     }}
                   >
-                    RM
+                    M
                   </span>
                 </Link>
               </div>
