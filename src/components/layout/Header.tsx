@@ -3,18 +3,33 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import ThemeSwitch from '@/components/ui/ThemeSwitch';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60);
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (!target.closest('header')) {
+        setIsDesktopMenuOpen(false);
+        setIsMenuOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -25,105 +40,159 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const toggleDesktopMenu = () => {
+    setIsDesktopMenuOpen(!isDesktopMenuOpen);
+  };
+
+  const closeDesktopMenu = () => {
+    setIsDesktopMenuOpen(false);
+  };
+
   return (
     <>
       {/* Island Header - Mobile & Desktop */}
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-6">
-            {/* Left - Brand Selector */}
-            <div className="flex items-center space-x-3">
-              <div 
-                className="px-4 py-2 radius-sm text-sm font-medium tracking-wide tap-highlight"
-                style={{ 
-                  backgroundColor: 'var(--island-accent)', 
-                  color: 'var(--text-primary)' 
-                }}
+          <div 
+            className={`island-container transition-all duration-500 ease-in-out px-6 ${
+              isDesktopMenuOpen ? 'h-auto py-8' : 'h-16'
+            }`}
+          >
+            {/* Top Bar */}
+            <div className="flex items-center justify-between h-16">
+              {/* Left - Brand Selector */}
+              <div className="flex items-center space-x-3">
+                <div 
+                  className="px-4 py-2 radius-sm text-sm font-medium tracking-wide tap-highlight"
+                  style={{ 
+                    backgroundColor: 'var(--island-accent)', 
+                    color: 'var(--text-primary)' 
+                  }}
+                >
+                  RYUNOSUKE MARUYAMA
+                </div>
+                <div className="px-4 py-2 text-sm font-medium tracking-wide tap-highlight cursor-pointer"
+                     style={{ color: 'var(--text-secondary)' }}>
+                  TOKYO
+                </div>
+              </div>
+
+              {/* Center - Logo */}
+              <div className="absolute left-1/2 transform -translate-x-1/2">
+                <div 
+                  className={`transition-all ${
+                    isScrolled || isDesktopMenuOpen ? 'opacity-0 transform translate-y-1 pointer-events-none' : 'opacity-100 transform translate-y-0'
+                  }`}
+                  style={{ 
+                    transitionDuration: 'var(--duration-normal)',
+                    transitionTimingFunction: 'var(--easing)'
+                  }}
+                >
+                  <Link href="/" className="flex flex-col items-center leading-none">
+                    <span 
+                      className="text-base font-light tracking-wider"
+                      style={{ 
+                        color: 'var(--text-primary)', 
+                        fontFamily: 'var(--font-serif)' 
+                      }}
+                    >
+                      RYUNOSUKE MARUYAMA TOKYO
+                    </span>
+                  </Link>
+                </div>
+                
+                <div 
+                  className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all ${
+                    isScrolled && !isDesktopMenuOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
+                  }`}
+                  style={{ 
+                    transitionDuration: 'var(--duration-normal)',
+                    transitionTimingFunction: 'var(--easing)'
+                  }}
+                >
+                  <Link href="/" className="flex items-center">
+                    <span 
+                      className="text-lg font-medium tracking-wide"
+                      style={{ 
+                        color: 'var(--text-primary)',
+                        fontFamily: 'var(--font-serif)' 
+                      }}
+                    >
+                      RM
+                    </span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right - Menu Button */}
+              <button
+                onClick={toggleDesktopMenu}
+                className="flex items-center space-x-2 text-sm font-light tap-highlight transition-all duration-200"
+                style={{ color: 'var(--text-secondary)' }}
               >
-                RYUNOSUKE MARUYAMA
-              </div>
-              <div className="px-4 py-2 text-sm font-medium tracking-wide tap-highlight cursor-pointer"
-                   style={{ color: 'var(--text-secondary)' }}>
-                TOKYO
-              </div>
+                <span>Menu</span>
+                <div className={`transition-transform duration-300 ${isDesktopMenuOpen ? 'rotate-180' : ''}`}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
             </div>
 
-            {/* Center - Logo */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <div 
-                className={`transition-all ${
-                  isScrolled ? 'opacity-0 transform translate-y-1 pointer-events-none' : 'opacity-100 transform translate-y-0'
-                }`}
-                style={{ 
-                  transitionDuration: 'var(--duration-normal)',
-                  transitionTimingFunction: 'var(--easing)'
-                }}
-              >
-                <Link href="/" className="flex flex-col items-center leading-none">
-                  <span 
-                    className="text-base font-light tracking-wider"
-                    style={{ 
-                      color: 'var(--text-primary)', 
-                      fontFamily: 'var(--font-serif)' 
-                    }}
-                  >
-                    RYUNOSUKE MARUYAMA TOKYO
-                  </span>
-                </Link>
-              </div>
-              
-              <div 
-                className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all ${
-                  isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
-                }`}
-                style={{ 
-                  transitionDuration: 'var(--duration-normal)',
-                  transitionTimingFunction: 'var(--easing)'
-                }}
-              >
-                <Link href="/" className="flex items-center">
-                  <span 
-                    className="text-lg font-medium tracking-wide"
-                    style={{ 
-                      color: 'var(--text-primary)',
-                      fontFamily: 'var(--font-serif)' 
-                    }}
-                  >
-                    RM
-                  </span>
-                </Link>
+            {/* Expanded Menu */}
+            <div 
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                isDesktopMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+              }`}
+            >
+              <div className="pt-8 pb-4">
+                {/* Categories */}
+                <div className="text-center mb-8">
+                  <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
+                      style={{ color: 'var(--text-muted)' }}>
+                    Categories
+                  </h3>
+                  <nav className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <Link href="/health" onClick={closeDesktopMenu}
+                          className="block py-3 text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                          style={{ color: 'var(--text-primary)' }}>
+                      Health
+                    </Link>
+                    <Link href="/ambition" onClick={closeDesktopMenu}
+                          className="block py-3 text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                          style={{ color: 'var(--text-primary)' }}>
+                      Ambition
+                    </Link>
+                    <Link href="/relationship" onClick={closeDesktopMenu}
+                          className="block py-3 text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                          style={{ color: 'var(--text-primary)' }}>
+                      Relationship
+                    </Link>
+                    <Link href="/money" onClick={closeDesktopMenu}
+                          className="block py-3 text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                          style={{ color: 'var(--text-primary)' }}>
+                      Money
+                    </Link>
+                  </nav>
+                </div>
+
+                {/* More Links & Theme */}
+                <div className="flex justify-center items-center space-x-12">
+                  <Link href="/about" onClick={closeDesktopMenu}
+                        className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                        style={{ color: 'var(--text-secondary)' }}>
+                    About
+                  </Link>
+                  <Link href="/misc" onClick={closeDesktopMenu}
+                        className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                        style={{ color: 'var(--text-secondary)' }}>
+                    Misc
+                  </Link>
+                  <ThemeSwitch />
+                </div>
               </div>
             </div>
-
-            {/* Right - Desktop Menu Links */}
-            <nav className="flex items-center space-x-8">
-              <Link href="/health" className="text-sm font-light tracking-wide tap-highlight" 
-                    style={{ color: 'var(--text-primary)' }}>
-                Health
-              </Link>
-              <Link href="/ambition" className="text-sm font-light tracking-wide tap-highlight" 
-                    style={{ color: 'var(--text-primary)' }}>
-                Ambition
-              </Link>
-              <Link href="/relationship" className="text-sm font-light tracking-wide tap-highlight" 
-                    style={{ color: 'var(--text-primary)' }}>
-                Relationship
-              </Link>
-              <Link href="/money" className="text-sm font-light tracking-wide tap-highlight" 
-                    style={{ color: 'var(--text-primary)' }}>
-                Money
-              </Link>
-              <Link href="/about" className="text-sm font-light tap-highlight" 
-                      style={{ color: 'var(--text-secondary)' }}>
-                About
-              </Link>
-              <Link href="/misc" className="text-sm font-light tap-highlight" 
-                      style={{ color: 'var(--text-secondary)' }}>
-                Misc
-              </Link>
-              <ThemeToggle variant="desktop" />
-            </nav>
           </div>
         </div>
 
@@ -266,12 +335,14 @@ const Header = () => {
             </div>
 
             {/* Menu Content */}
-            <nav className="px-6 pb-8 space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-sm font-medium tracking-wide" style={{ color: 'var(--text-secondary)' }}>
-                  CATEGORIES
+            <nav className="px-6 pb-8 text-center">
+              {/* Categories */}
+              <div className="mb-8">
+                <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
+                    style={{ color: 'var(--text-muted)' }}>
+                  Categories
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                     <span className="text-lg font-light tracking-wide">Health</span>
                   </Link>
@@ -287,21 +358,29 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="text-sm font-medium tracking-wide" style={{ color: 'var(--text-secondary)' }}>
-                  MORE
+              {/* More Links */}
+              <div className="mb-8">
+                <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
+                    style={{ color: 'var(--text-muted)' }}>
+                  More
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                     <span className="text-lg font-light tracking-wide">About</span>
                   </Link>
                   <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                     <span className="text-lg font-light tracking-wide">Misc</span>
                   </Link>
-                  <div onClick={closeMenu}>
-                    <ThemeToggle variant="mobile" />
-                  </div>
                 </div>
+              </div>
+
+              {/* Theme Switch */}
+              <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
+                <h3 className="text-xs font-medium tracking-widest uppercase mb-4" 
+                    style={{ color: 'var(--text-muted)' }}>
+                  Theme
+                </h3>
+                <ThemeSwitch />
               </div>
             </nav>
           </div>
@@ -309,7 +388,9 @@ const Header = () => {
       )}
 
       {/* Header Spacer */}
-      <div className="h-16 md:h-18"></div>
+      <div className={`transition-all duration-500 ease-in-out ${
+        isDesktopMenuOpen ? 'h-16 md:h-80' : 'h-16 md:h-16'
+      }`}></div>
     </>
   );
 };
