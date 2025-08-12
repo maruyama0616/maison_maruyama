@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -121,6 +122,7 @@ const Header = () => {
                       style={{ color: 'var(--text-secondary)' }}>
                 Misc
               </Link>
+              <ThemeToggle variant="desktop" />
             </nav>
           </div>
         </div>
@@ -296,6 +298,9 @@ const Header = () => {
                   <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                     <span className="text-lg font-light tracking-wide">Misc</span>
                   </Link>
+                  <div onClick={closeMenu}>
+                    <ThemeToggle variant="mobile" />
+                  </div>
                 </div>
               </div>
             </nav>

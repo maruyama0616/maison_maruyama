@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
@@ -40,11 +41,17 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${playfairDisplay.variable} font-sans antialiased bg-white text-gray-900`}
+        className={`${playfairDisplay.variable} font-sans antialiased`}
+        style={{ 
+          backgroundColor: 'var(--page-background)', 
+          color: 'var(--text-primary)' 
+        }}
       >
-        <Layout>
-          {children}
-        </Layout>
+        <ThemeProvider>
+          <Layout>
+            {children}
+          </Layout>
+        </ThemeProvider>
       </body>
     </html>
   );

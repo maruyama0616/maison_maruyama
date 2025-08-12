@@ -40,14 +40,14 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Hero Section - Ultra Minimal */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
           <div className="text-center fade-in">
-            <h1 className="font-serif text-2xl small-caps font-light mb-4 tracking-wider"
+            <h1 className="font-serif text-2xl md:text-3xl lg:text-4xl small-caps font-light text-spacing tracking-wider"
                 style={{ color: 'var(--text-primary)' }}>
               MARUYAMA
             </h1>
-            <p className="font-sans text-xs font-ultra-light tracking-wide uppercase"
+            <p className="font-sans text-xs md:text-sm font-ultra-light tracking-wide uppercase"
                style={{ color: 'var(--text-secondary)' }}>
               Cool Life, Better Work
             </p>
@@ -56,26 +56,26 @@ export default function Home() {
       </section>
 
       {/* Popular Posts Carousel */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <h2 className="font-serif text-sm small-caps font-light mb-16 text-center tracking-wider"
+          <h2 className="font-serif text-sm md:text-base small-caps font-light text-spacing text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             POPULAR POSTS
           </h2>
-          <div className="max-w-4xl mx-auto fade-in-delay-1">
+          <div className="max-w-5xl mx-auto fade-in-delay-1">
             <Carousel items={popularPosts} />
           </div>
         </div>
       </section>
 
       {/* Category Navigation */}
-      <section className="w-full py-32">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <h2 className="font-serif text-sm small-caps font-light mb-16 text-center tracking-wider"
+          <h2 className="font-serif text-sm md:text-base small-caps font-light text-spacing text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             CATEGORIES
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
             <Link href="/health" className="group">
               <div className="aspect-[4/5] image-soft mb-6 hover-subtle transition-opacity image-clip-rounded radius-lg"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
@@ -196,22 +196,22 @@ export default function Home() {
       </section>
 
       {/* About & Misc Navigation */}
-      <section className="w-full py-24">
+      <section className="w-full section-spacing">
         <div className="container-fixed">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
             <Link href="/about" className="group">
-              <div className="radius-lg p-12 text-center hover-subtle transition-opacity"
+              <div className="radius-lg card-spacing text-center hover-subtle transition-opacity"
                    style={{ backgroundColor: 'var(--island-background)' }}>
                 <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                   <svg className="w-12 h-12" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-sm small-caps font-light mb-4 tracking-wider"
+                <h3 className="font-serif text-sm md:text-base small-caps font-light text-spacing tracking-wider"
                     style={{ color: 'var(--text-primary)' }}>
                   ABOUT / CONCEPT
                 </h3>
-                <p className="font-sans text-xs font-light"
+                <p className="font-sans text-xs md:text-sm font-light"
                    style={{ color: 'var(--text-secondary)' }}>
                   このサイトのコンセプトと<br />
                   私について
@@ -220,18 +220,18 @@ export default function Home() {
             </Link>
 
             <Link href="/misc" className="group">
-              <div className="radius-lg p-12 text-center hover-subtle transition-opacity"
+              <div className="radius-lg card-spacing text-center hover-subtle transition-opacity"
                    style={{ backgroundColor: 'var(--island-accent)' }}>
                 <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center">
                   <svg className="w-12 h-12" style={{ color: 'var(--text-primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                   </svg>
                 </div>
-                <h3 className="font-serif text-sm small-caps font-light mb-4 tracking-wider"
+                <h3 className="font-serif text-sm md:text-base small-caps font-light text-spacing tracking-wider"
                     style={{ color: 'var(--text-primary)' }}>
                   MISC / JOURNAL
                 </h3>
-                <p className="font-sans text-xs font-light"
+                <p className="font-sans text-xs md:text-sm font-light"
                    style={{ color: 'var(--text-secondary)' }}>
                   日記や気づき、<br />
                   趣味の記録など
