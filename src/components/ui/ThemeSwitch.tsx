@@ -11,7 +11,14 @@ export default function ThemeSwitch({ className = '', preventMenuClose = false }
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className={`flex items-center justify-center space-x-4 ${className}`}>
+    <div 
+      className={`flex items-center justify-center space-x-4 ${className}`}
+      onClick={(e) => {
+        if (preventMenuClose) {
+          e.stopPropagation();
+        }
+      }}
+    >
       <span 
         className={`text-sm font-light tracking-wide transition-colors duration-200 ${
           theme === 'light' ? 'opacity-100' : 'opacity-50'

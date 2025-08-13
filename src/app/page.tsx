@@ -39,22 +39,6 @@ const popularPosts = [
 export default function Home() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
-      {/* Hero Section - Ultra Minimal */}
-      <section className="w-full section-spacing">
-        <div className="container-fixed">
-          <div className="text-center fade-in">
-            <h1 className="font-serif text-2xl small-caps font-light text-spacing tracking-wider"
-                style={{ color: 'var(--text-primary)' }}>
-              MARUYAMA
-            </h1>
-            <p className="font-sans text-xs font-ultra-light tracking-wide uppercase"
-               style={{ color: 'var(--text-secondary)' }}>
-              Cool Life, Better Work
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Popular Posts Carousel */}
       <section className="w-full section-spacing">
         <div className="container-fixed">

@@ -334,29 +334,29 @@ const Header = () => {
           <nav className="px-6 py-8 text-center">
             {/* Categories */}
             <div className="mb-8">
-              <div className="space-y-6">
-                <Link href="/health" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+              <div className="space-y-8">
+                <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Health</span>
                 </Link>
-                <Link href="/ambition" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/ambition" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Ambition</span>
                 </Link>
-                <Link href="/relationship" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/relationship" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Relationship</span>
                 </Link>
-                <Link href="/money" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/money" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Money</span>
                 </Link>
               </div>
             </div>
 
             {/* More Links */}
-            <div className="mb-8 pt-4">
-              <div className="space-y-6">
-                <Link href="/about" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+            <div className="mb-8 pt-6">
+              <div className="space-y-8">
+                <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">About</span>
                 </Link>
-                <Link href="/misc" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Misc</span>
                 </Link>
               </div>
