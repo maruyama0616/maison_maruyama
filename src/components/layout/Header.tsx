@@ -213,8 +213,8 @@ const Header = () => {
                   <Image
                     src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
                     alt="MARUYAMA"
-                    width={32}
-                    height={32}
+                    width={48}
+                    height={48}
                     className="object-contain"
                   />
                 </Link>
