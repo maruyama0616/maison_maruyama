@@ -293,7 +293,7 @@ const Header = () => {
               
               {/* Logo Image - Shown on scroll */}
               <div 
-                className={`absolute -top-1 left-1/2 transform -translate-x-1/2 transition-all ${
+                className={`absolute -top-2 left-1/2 transform -translate-x-1/2 transition-all ${
                   isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
                 }`}
                 style={{ 
