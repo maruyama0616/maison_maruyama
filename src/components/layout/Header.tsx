@@ -9,7 +9,7 @@ import SearchModal from '@/components/ui/SearchModal';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Header = () => {
-  // State for mobile menu and search modal
+  // State management for mobile menu, search modal, and scroll detection
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
