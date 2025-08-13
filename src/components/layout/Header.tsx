@@ -3,10 +3,49 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import ThemeToggle from '@/components/ui/ThemeToggle';
 import ThemeSwitch from '@/components/ui/ThemeSwitch';
 import SearchModal from '@/components/ui/SearchModal';
 import { useTheme } from '@/contexts/ThemeContext';
+
+interface SearchResult {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  slug: string;
+}
+
+// Mock search results (same as SearchModal)
+const mockSearchResults: SearchResult[] = [
+  {
+    id: '1',
+    title: '健康的なライフスタイルの作り方',
+    excerpt: '毎日の小さな習慣が大きな変化をもたらす方法について',
+    category: 'health',
+    slug: 'healthy-lifestyle'
+  },
+  {
+    id: '2',
+    title: '目標達成のための戦略',
+    excerpt: 'ambitionを実現するための具体的なステップとマインドセット',
+    category: 'ambition',
+    slug: 'goal-achievement'
+  },
+  {
+    id: '3',
+    title: '良好な人間関係を築く方法',
+    excerpt: 'コミュニケーションスキルと信頼関係の構築について',
+    category: 'relationship',
+    slug: 'building-relationships'
+  },
+  {
+    id: '4',
+    title: '賢いお金の管理術',
+    excerpt: '投資と節約のバランスを取った財務戦略',
+    category: 'money',
+    slug: 'money-management'
+  }
+];
 
 const Header = () => {
   // State management for mobile menu, search modal, and scroll detection
@@ -17,41 +56,9 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [desktopSearchQuery, setDesktopSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [desktopSearchResults, setDesktopSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [desktopSearchResults, setDesktopSearchResults] = useState<SearchResult[]>([]);
   const { theme } = useTheme();
-
-  // Mock search results (same as SearchModal)
-  const mockSearchResults = [
-    {
-      id: '1',
-      title: '健康的なライフスタイルの作り方',
-      excerpt: '毎日の小さな習慣が大きな変化をもたらす方法について',
-      category: 'health',
-      slug: 'healthy-lifestyle'
-    },
-    {
-      id: '2',
-      title: '目標達成のための戦略',
-      excerpt: 'ambitionを実現するための具体的なステップとマインドセット',
-      category: 'ambition',
-      slug: 'goal-achievement'
-    },
-    {
-      id: '3',
-      title: '良好な人間関係を築く方法',
-      excerpt: 'コミュニケーションスキルと信頼関係の構築について',
-      category: 'relationship',
-      slug: 'building-relationships'
-    },
-    {
-      id: '4',
-      title: '賢いお金の管理術',
-      excerpt: '投資と節約のバランスを取った財務戦略',
-      category: 'money',
-      slug: 'money-management'
-    }
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,9 +119,6 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const openSearch = () => {
-    setIsSearchOpen(true);
-  };
 
   const closeSearch = () => {
     setIsSearchOpen(false);
