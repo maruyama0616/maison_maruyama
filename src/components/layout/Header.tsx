@@ -154,9 +154,9 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-12">
+          <div className="island-container h-16 flex items-center justify-between px-16">
             {/* Left Section - Main Categories */}
-            <nav className="flex items-center space-x-10">
+            <nav className="flex items-center space-x-12">
               <Link href="/health"
                     className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
