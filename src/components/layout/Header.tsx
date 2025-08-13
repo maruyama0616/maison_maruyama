@@ -72,10 +72,6 @@ const Header = () => {
                 >
                   MARUYAMA
                 </div>
-                <div className="px-4 py-2 text-sm font-medium tracking-wide tap-highlight cursor-pointer"
-                     style={{ color: 'var(--text-secondary)' }}>
-                  TOKYO
-                </div>
               </div>
 
               {/* Center - Logo */}
@@ -262,12 +258,6 @@ const Header = () => {
                   >
                     MARUYAMA
                   </span>
-                  <span 
-                    className="text-xs tracking-widest opacity-75"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    TOKYO
-                  </span>
                 </Link>
               </div>
               
@@ -348,17 +338,17 @@ const Header = () => {
                   style={{ color: 'var(--text-muted)' }}>
                 Categories
               </h3>
-              <div className="space-y-6">
-                <Link href="/health" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+              <div className="space-y-4">
+                <Link href="/health" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Health</span>
                 </Link>
-                <Link href="/ambition" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/ambition" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Ambition</span>
                 </Link>
-                <Link href="/relationship" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/relationship" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Relationship</span>
                 </Link>
-                <Link href="/money" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/money" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Money</span>
                 </Link>
               </div>
@@ -370,11 +360,11 @@ const Header = () => {
                   style={{ color: 'var(--text-muted)' }}>
                 More
               </h3>
-              <div className="space-y-6">
-                <Link href="/about" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+              <div className="space-y-4">
+                <Link href="/about" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">About</span>
                 </Link>
-                <Link href="/misc" className="block py-3 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/misc" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Misc</span>
                 </Link>
               </div>
