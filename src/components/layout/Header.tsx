@@ -334,11 +334,7 @@ const Header = () => {
           <nav className="px-6 py-8 text-center">
             {/* Categories */}
             <div className="mb-8">
-              <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
-                  style={{ color: 'var(--text-muted)' }}>
-                Categories
-              </h3>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <Link href="/health" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">Health</span>
                 </Link>
@@ -355,12 +351,8 @@ const Header = () => {
             </div>
 
             {/* More Links */}
-            <div className="mb-8">
-              <h3 className="text-xs font-medium tracking-widest uppercase mb-6" 
-                  style={{ color: 'var(--text-muted)' }}>
-                More
-              </h3>
-              <div className="space-y-4">
+            <div className="mb-8 pt-4">
+              <div className="space-y-6">
                 <Link href="/about" className="block py-2 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-lg font-light tracking-wide">About</span>
                 </Link>
@@ -372,11 +364,7 @@ const Header = () => {
 
             {/* Theme Switch */}
             <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
-              <h3 className="text-xs font-medium tracking-widest uppercase mb-4" 
-                  style={{ color: 'var(--text-muted)' }}>
-                Theme
-              </h3>
-              <ThemeSwitch />
+              <ThemeSwitch preventMenuClose={true} />
             </div>
           </nav>
         </div>

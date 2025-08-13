@@ -4,9 +4,10 @@ import { useTheme } from '@/contexts/ThemeContext';
 
 interface ThemeSwitchProps {
   className?: string;
+  preventMenuClose?: boolean;
 }
 
-export default function ThemeSwitch({ className = '' }: ThemeSwitchProps) {
+export default function ThemeSwitch({ className = '', preventMenuClose = false }: ThemeSwitchProps) {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -21,7 +22,12 @@ export default function ThemeSwitch({ className = '' }: ThemeSwitchProps) {
       </span>
       
       <button
-        onClick={toggleTheme}
+        onClick={(e) => {
+          if (preventMenuClose) {
+            e.stopPropagation();
+          }
+          toggleTheme();
+        }}
         className="relative w-12 h-6 rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2"
         style={{
           backgroundColor: theme === 'dark' ? 'var(--text-primary)' : 'var(--island-accent)'
