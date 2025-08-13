@@ -2,16 +2,24 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import ThemeSwitch from '@/components/ui/ThemeSwitch';
 import SearchModal from '@/components/ui/SearchModal';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Header = () => {
   // State for mobile menu and search modal
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
       if (!target.closest('header')) {
@@ -19,9 +27,11 @@ const Header = () => {
       }
     };
 
+    window.addEventListener('scroll', handleScroll);
     document.addEventListener('click', handleClickOutside);
     
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
@@ -189,7 +199,7 @@ const Header = () => {
                 </Link>
               </div>
               
-              {/* Compact Logo - Shown on scroll */}
+              {/* Logo Image - Shown on scroll */}
               <div 
                 className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all ${
                   isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
@@ -200,15 +210,13 @@ const Header = () => {
                 }}
               >
                 <Link href="/" className="flex items-center">
-                  <span 
-                    className="text-lg font-medium tracking-wide"
-                    style={{ 
-                      color: 'var(--text-primary)',
-                      fontFamily: 'var(--font-serif)' 
-                    }}
-                  >
-                    M
-                  </span>
+                  <Image
+                    src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
+                    alt="MARUYAMA"
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
                 </Link>
               </div>
             </div>
