@@ -150,55 +150,87 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-center px-6">
-            {/* Navigation Menu */}
+          <div className="island-container h-16 flex items-center justify-between px-6">
+            {/* Left Section - Main Categories */}
             <nav className="flex items-center space-x-8">
-              {/* Logo/Brand */}
-              <Link href="/" className="flex items-center mr-8">
-                <span 
-                  className="text-lg font-medium tracking-wide"
-                  style={{ 
-                    color: 'var(--text-primary)',
-                    fontFamily: 'var(--font-serif)' 
-                  }}
-                >
-                  MARUYAMA
-                </span>
-              </Link>
-
-              {/* Main Navigation */}
               <Link href="/health"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Health
               </Link>
               <Link href="/ambition"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Ambition
               </Link>
               <Link href="/relationship"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Relationship
               </Link>
               <Link href="/money"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Money
               </Link>
+            </nav>
+
+            {/* Center Section - Brand Logo/Text */}
+            <div className="absolute left-1/2 transform -translate-x-1/2">
+              {/* Full Text Logo - Hidden on scroll */}
+              <div 
+                className={`transition-all ${
+                  isScrolled ? 'opacity-0 transform translate-y-1 pointer-events-none' : 'opacity-100 transform translate-y-0'
+                }`}
+                style={{ 
+                  transitionDuration: 'var(--duration-normal)',
+                  transitionTimingFunction: 'var(--easing)'
+                }}
+              >
+                <Link href="/" className="flex items-center">
+                  <span 
+                    className="text-lg font-medium tracking-wide"
+                    style={{ 
+                      color: 'var(--text-primary)',
+                      fontFamily: 'var(--font-serif)' 
+                    }}
+                  >
+                    MARUYAMA
+                  </span>
+                </Link>
+              </div>
               
-              {/* Separator */}
-              <div className="w-px h-4 bg-opacity-20" style={{ backgroundColor: 'var(--text-muted)' }}></div>
-              
-              {/* More Links */}
+              {/* Logo Image - Shown on scroll */}
+              <div 
+                className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all ${
+                  isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
+                }`}
+                style={{ 
+                  transitionDuration: 'var(--duration-normal)',
+                  transitionTimingFunction: 'var(--easing)'
+                }}
+              >
+                <Link href="/" className="flex items-center justify-center h-16">
+                  <Image
+                    src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
+                    alt="MARUYAMA"
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Section - Secondary Links & Actions */}
+            <nav className="flex items-center space-x-6">
               <Link href="/about"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-secondary)' }}>
                 About
               </Link>
               <Link href="/misc"
-                    className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-secondary)' }}>
                 Misc
               </Link>
@@ -206,7 +238,7 @@ const Header = () => {
               {/* Search Button */}
               <button
                 onClick={toggleDesktopSearch}
-                className="text-sm font-light tracking-wide hover:opacity-70 transition-opacity"
+                className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                 style={{ color: 'var(--text-secondary)' }}
                 aria-label="検索"
               >
