@@ -271,12 +271,12 @@ const Header = () => {
                   transitionTimingFunction: 'var(--easing)'
                 }}
               >
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-center justify-center h-14">
                   <Image
                     src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
                     alt="MARUYAMA"
-                    width={48}
-                    height={48}
+                    width={56}
+                    height={56}
                     className="object-contain"
                   />
                 </Link>
