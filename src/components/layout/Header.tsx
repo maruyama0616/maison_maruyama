@@ -156,7 +156,7 @@ const Header = () => {
         <div className="hidden md:block">
           <div className="island-container h-16 flex items-center justify-between px-16">
             {/* Left Section - Main Categories */}
-            <nav className="flex items-center space-x-12">
+            <nav className="flex items-center space-x-16">
               <Link href="/health"
                     className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
