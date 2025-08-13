@@ -154,9 +154,9 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-6">
+          <div className="island-container h-16 flex items-center justify-between px-12">
             {/* Left Section - Main Categories */}
-            <nav className="flex items-center space-x-8">
+            <nav className="flex items-center space-x-10">
               <Link href="/health"
                     className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
@@ -206,7 +206,7 @@ const Header = () => {
               
               {/* Logo Image - Shown on scroll */}
               <div 
-                className={`absolute top-0 left-1/2 transform -translate-x-1/2 transition-all ${
+                className={`absolute -top-2 left-1/2 transform -translate-x-1/2 transition-all ${
                   isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
                 }`}
                 style={{ 
@@ -384,7 +384,7 @@ const Header = () => {
       </header>
 
       {/* Desktop Search Bar - Expanding Header */}
-      <div className={`hidden md:block fixed top-16 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${
+      <div className={`hidden md:block fixed top-20 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${
         isDesktopSearchOpen ? (desktopSearchResults.length > 0 ? 'max-h-96' : 'max-h-32') + ' opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div 
