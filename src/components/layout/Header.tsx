@@ -12,8 +12,43 @@ const Header = () => {
   // State management for mobile menu, search modal, and scroll detection
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const { theme } = useTheme();
+
+  // Mock search results (same as SearchModal)
+  const mockSearchResults = [
+    {
+      id: '1',
+      title: '健康的なライフスタイルの作り方',
+      excerpt: '毎日の小さな習慣が大きな変化をもたらす方法について',
+      category: 'health',
+      slug: 'healthy-lifestyle'
+    },
+    {
+      id: '2',
+      title: '目標達成のための戦略',
+      excerpt: 'ambitionを実現するための具体的なステップとマインドセット',
+      category: 'ambition',
+      slug: 'goal-achievement'
+    },
+    {
+      id: '3',
+      title: '良好な人間関係を築く方法',
+      excerpt: 'コミュニケーションスキルと信頼関係の構築について',
+      category: 'relationship',
+      slug: 'building-relationships'
+    },
+    {
+      id: '4',
+      title: '賢いお金の管理術',
+      excerpt: '投資と節約のバランスを取った財務戦略',
+      category: 'money',
+      slug: 'money-management'
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +59,7 @@ const Header = () => {
       const target = event.target as Element;
       if (!target.closest('header')) {
         setIsMenuOpen(false);
+        setIsMobileSearchOpen(false);
       }
     };
 
@@ -35,6 +71,20 @@ const Header = () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+  // Handle search query changes
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      const filtered = mockSearchResults.filter(
+        item =>
+          item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filtered);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,6 +100,18 @@ const Header = () => {
 
   const closeSearch = () => {
     setIsSearchOpen(false);
+  };
+
+  const toggleMobileSearch = () => {
+    setIsMobileSearchOpen(!isMobileSearchOpen);
+    if (!isMobileSearchOpen) {
+      setSearchQuery('');
+    }
+  };
+
+  const closeMobileSearch = () => {
+    setIsMobileSearchOpen(false);
+    setSearchQuery('');
   };
 
   return (
@@ -163,7 +225,7 @@ const Header = () => {
                 </div>
               </button>
               <button
-                onClick={openSearch}
+                onClick={toggleMobileSearch}
                 className="tap-target tap-highlight"
                 style={{ color: 'var(--text-primary)' }}
                 aria-label="検索"
@@ -303,6 +365,88 @@ const Header = () => {
               <ThemeSwitch preventMenuClose={true} />
             </div>
           </nav>
+        </div>
+      </div>
+
+      {/* Mobile Search Bar - Expanding Header */}
+      <div className={`md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${
+        isMobileSearchOpen ? (searchResults.length > 0 ? 'max-h-96' : 'max-h-32') + ' opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div 
+          className="island-container mx-4 mt-2"
+          style={{ 
+            backgroundColor: 'var(--island-background)',
+            borderRadius: 'var(--radius-lg)'
+          }}
+        >
+          <div className="p-6">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg className="w-5 h-5" style={{ color: 'var(--text-muted)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="記事を検索..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-12 py-3 text-base font-light tracking-wide border-none outline-none rounded-lg"
+                style={{ 
+                  backgroundColor: 'var(--island-accent)',
+                  color: 'var(--text-primary)'
+                }}
+                autoFocus
+              />
+              <button
+                onClick={closeMobileSearch}
+                className="absolute inset-y-0 right-0 flex items-center pr-3"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Search Results */}
+            {searchResults.length > 0 && (
+              <div className="mt-4 pt-4 border-t border-opacity-10" style={{ borderColor: 'var(--text-muted)' }}>
+                <div className="space-y-3 max-h-60 overflow-y-auto">
+                  {searchResults.map((result) => (
+                    <Link
+                      key={result.id}
+                      href={`/${result.category}/${result.slug}`}
+                      onClick={closeMobileSearch}
+                      className="block p-3 rounded-lg hover:opacity-70 transition-opacity"
+                      style={{ backgroundColor: 'var(--island-accent)' }}
+                    >
+                      <div className="mb-1">
+                        <span 
+                          className="text-xs font-medium tracking-wider uppercase"
+                          style={{ color: 'var(--text-muted)' }}
+                        >
+                          {result.category}
+                        </span>
+                      </div>
+                      <h3 
+                        className="text-sm font-light tracking-wide mb-1"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
+                        {result.title}
+                      </h3>
+                      <p 
+                        className="text-xs font-light leading-relaxed line-clamp-2"
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
+                        {result.excerpt}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
