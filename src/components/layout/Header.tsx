@@ -7,6 +7,7 @@ import ThemeSwitch from '@/components/ui/ThemeSwitch';
 import SearchModal from '@/components/ui/SearchModal';
 
 const Header = () => {
+  // State for mobile menu and search modal
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
