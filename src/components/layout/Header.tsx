@@ -193,10 +193,11 @@ const Header = () => {
               >
                 <Link href="/" className="flex items-center">
                   <span 
-                    className="text-lg font-medium tracking-wide"
+                    className="text-lg font-bold tracking-wide"
                     style={{ 
                       color: 'var(--text-primary)',
-                      fontFamily: 'var(--font-serif)' 
+                      fontFamily: 'var(--font-brand)',
+                      fontWeight: '700'
                     }}
                   >
                     MARUYAMA
@@ -316,10 +317,11 @@ const Header = () => {
               >
                 <Link href="/" className="flex flex-col items-center leading-none">
                   <span 
-                    className="text-sm font-light tracking-wider"
+                    className="text-sm font-bold tracking-wider"
                     style={{ 
                       color: 'var(--text-primary)', 
-                      fontFamily: 'var(--font-serif)' 
+                      fontFamily: 'var(--font-brand)',
+                      fontWeight: '700'
                     }}
                   >
                     MARUYAMA
