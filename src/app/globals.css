@@ -166,6 +166,20 @@ body {
   }
 }
 
+@media (min-width: 1920px) {
+  .container-fixed {
+    max-width: 1600px;
+    padding: 0 6rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container-fixed {
+    max-width: 1800px;
+    padding: 0 8rem;
+  }
+}
+
 /* Grid System */
 .grid-minimal {
   display: grid;
