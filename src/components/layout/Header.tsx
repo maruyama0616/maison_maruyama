@@ -154,7 +154,7 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-4">
+          <div className="island-container h-16 flex items-center justify-between px-16">
             {/* Left Section - Main Categories */}
             <nav className="flex items-center header-nav-left">
               <Link href="/health"

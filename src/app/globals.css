@@ -214,24 +214,6 @@ body {
   margin: 0 var(--spacing-mobile-margin);
 }
 
-/* Additional margin for desktop to prevent overflow */
-@media (min-width: 768px) {
-  .island-container {
-    margin: 0 4rem; /* Large side margins to ensure content stays within bounds */
-  }
-}
-
-@media (min-width: 1024px) {
-  .island-container {
-    margin: 0 6rem; /* Even larger margins for bigger screens */
-  }
-}
-
-@media (min-width: 1280px) {
-  .island-container {
-    margin: 0 8rem; /* Maximum margins for very wide screens */
-  }
-}
 
 .radius-xs { border-radius: var(--radius-xs); }
 .radius-sm { border-radius: var(--radius-sm); }
@@ -317,11 +299,11 @@ body {
 
 /* Header Navigation Spacing Override */
 .header-nav-left > * + * {
-  margin-left: 1rem; /* 16px - minimal spacing to prevent overflow */
+  margin-left: 1.5rem; /* 24px - comfortable spacing within island bounds */
 }
 
 .header-nav-right > * + * {
-  margin-left: 0.75rem; /* 12px - minimal spacing to prevent overflow */
+  margin-left: 1.25rem; /* 20px - comfortable spacing within island bounds */
 }
 
 .mobile-menu-categories > * + * {
