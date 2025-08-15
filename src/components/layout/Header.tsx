@@ -154,26 +154,26 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-12">
+          <div className="island-container h-16 flex items-center justify-between px-6">
             {/* Left Section - Main Categories */}
             <nav className="flex items-center header-nav-left">
               <Link href="/health"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Health
               </Link>
               <Link href="/ambition"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Ambition
               </Link>
               <Link href="/relationship"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Relationship
               </Link>
               <Link href="/money"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
                 Money
               </Link>
@@ -230,12 +230,12 @@ const Header = () => {
             {/* Right Section - Secondary Links & Actions */}
             <nav className="flex items-center header-nav-right">
               <Link href="/about"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-secondary)' }}>
                 About
               </Link>
               <Link href="/misc"
-                    className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                    className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-secondary)' }}>
                 Misc
               </Link>
@@ -243,7 +243,7 @@ const Header = () => {
               {/* Search Button */}
               <button
                 onClick={toggleDesktopSearch}
-                className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
+                className="text-xs font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                 style={{ color: 'var(--text-secondary)' }}
                 aria-label="検索"
               >
