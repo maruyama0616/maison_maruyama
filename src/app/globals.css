@@ -214,6 +214,13 @@ body {
   margin: 0 var(--spacing-mobile-margin);
 }
 
+/* Additional margin for desktop to prevent overflow */
+@media (min-width: 768px) {
+  .island-container {
+    margin: 0 2rem; /* Increase side margins on larger screens */
+  }
+}
+
 .radius-xs { border-radius: var(--radius-xs); }
 .radius-sm { border-radius: var(--radius-sm); }
 .radius-md { border-radius: var(--radius-md); }
