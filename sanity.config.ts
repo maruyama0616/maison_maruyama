@@ -13,7 +13,7 @@ export default defineConfig({
   name: 'maruyama-blog',
   title: 'MARUYAMA Blog',
   
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'hc6o75o9',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   
   basePath: '/studio',

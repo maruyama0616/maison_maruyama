@@ -4,7 +4,14 @@ import PostCard from '@/components/blog/PostCard'
 import type { Post } from '@/types/sanity'
 
 export default async function BlogPage() {
-  const posts = await client.fetch<Post[]>(postsQuery)
+  let posts: Post[] = []
+  
+  try {
+    posts = await client.fetch<Post[]>(postsQuery) || []
+  } catch (error) {
+    console.error('Failed to fetch posts:', error)
+    posts = []
+  }
 
   return (
     <div className="min-h-screen py-20">

@@ -33,9 +33,9 @@ const PostCard = ({ post }: PostCardProps) => {
           {/* Content */}
           <div className="p-6">
             {/* Categories */}
-            {post.categories.length > 0 && (
+            {post.categories && post.categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
-                {post.categories.slice(0, 2).map((category) => (
+                {(post.categories || []).slice(0, 2).map((category) => (
                   <span
                     key={category._id}
                     className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
@@ -63,9 +63,9 @@ const PostCard = ({ post }: PostCardProps) => {
               </time>
               
               {/* Tags */}
-              {post.tags.length > 0 && (
+              {post.tags && post.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1">
-                  {post.tags.slice(0, 2).map((tag) => (
+                  {(post.tags || []).slice(0, 2).map((tag) => (
                     <span
                       key={tag._id}
                       className="text-xs text-gray-400 hover:text-gray-600"

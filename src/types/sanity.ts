@@ -35,6 +35,6 @@ export interface Post {
   excerpt: string;
   mainImage?: SanityImage;
   content: unknown[]; // Rich text content from Sanity
-  categories: Category[];
-  tags: Tag[];
+  categories: Category[] | null;
+  tags: Tag[] | null;
 }
