@@ -299,11 +299,11 @@ body {
 
 /* Header Navigation Spacing Override */
 .header-nav-left > * + * {
-  margin-left: 1.5rem; /* 24px - comfortable spacing within island bounds */
+  margin-left: 1.25rem; /* 20px - balanced spacing with increased padding */
 }
 
 .header-nav-right > * + * {
-  margin-left: 1.25rem; /* 20px - comfortable spacing within island bounds */
+  margin-left: 1rem; /* 16px - balanced spacing with increased padding */
 }
 
 .mobile-menu-categories > * + * {
