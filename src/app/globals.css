@@ -217,7 +217,19 @@ body {
 /* Additional margin for desktop to prevent overflow */
 @media (min-width: 768px) {
   .island-container {
-    margin: 0 2rem; /* Increase side margins on larger screens */
+    margin: 0 4rem; /* Large side margins to ensure content stays within bounds */
+  }
+}
+
+@media (min-width: 1024px) {
+  .island-container {
+    margin: 0 6rem; /* Even larger margins for bigger screens */
+  }
+}
+
+@media (min-width: 1280px) {
+  .island-container {
+    margin: 0 8rem; /* Maximum margins for very wide screens */
   }
 }
 
