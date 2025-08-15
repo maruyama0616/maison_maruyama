@@ -298,11 +298,11 @@ body {
 
 /* Header Navigation Spacing Override */
 .header-nav-left > * + * {
-  margin-left: 2rem; /* 32px - optimized for container width */
+  margin-left: 1.5rem; /* 24px - further optimized for tighter fit */
 }
 
 .header-nav-right > * + * {
-  margin-left: 1.75rem; /* 28px - optimized for container width */
+  margin-left: 1.25rem; /* 20px - further optimized for tighter fit */
 }
 
 .mobile-menu-categories > * + * {
