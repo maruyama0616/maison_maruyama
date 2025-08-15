@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="text-center">
           <p className="font-sans text-xs font-ultra-light tracking-widest uppercase mb-4"
              style={{ color: 'var(--text-secondary)' }}>
-            © {new Date().getFullYear()} MARUYAMA
+            © {new Date().getFullYear()} MARUYAMA JOURNAL
           </p>
           <p className="font-sans text-xs font-ultra-light tracking-wide"
              style={{ color: 'var(--text-muted)' }}>

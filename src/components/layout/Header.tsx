@@ -200,7 +200,7 @@ const Header = () => {
                       fontWeight: '700'
                     }}
                   >
-                    MARUYAMA
+                    MARUYAMA JOURNAL
                   </span>
                 </Link>
               </div>
@@ -324,7 +324,7 @@ const Header = () => {
                       fontWeight: '700'
                     }}
                   >
-                    MARUYAMA
+                    MARUYAMA JOURNAL
                   </span>
                 </Link>
               </div>
