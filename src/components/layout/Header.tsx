@@ -151,7 +151,7 @@ const Header = () => {
   return (
     <>
       {/* Island Header - Mobile & Desktop */}
-      <header className="fixed top-0 left-0 right-0 z-50 safe-area-top">
+      <header className="fixed top-0 left-0 right-0 z-50 safe-area-top px-4 md:px-6 lg:px-8">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
           <div className="island-container h-16 flex items-center justify-between px-16">
