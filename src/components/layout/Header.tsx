@@ -156,7 +156,7 @@ const Header = () => {
         <div className="hidden md:block">
           <div className="island-container h-16 flex items-center justify-between px-16">
             {/* Left Section - Main Categories */}
-            <nav className="flex items-center space-x-12">
+            <nav className="flex items-center header-nav-left">
               <Link href="/health"
                     className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-primary)' }}>
@@ -228,7 +228,7 @@ const Header = () => {
             </div>
 
             {/* Right Section - Secondary Links & Actions */}
-            <nav className="flex items-center space-x-10">
+            <nav className="flex items-center header-nav-right">
               <Link href="/about"
                     className="text-sm font-light tracking-wide hover:text-opacity-70 transition-colors duration-200"
                     style={{ color: 'var(--text-secondary)' }}>
@@ -483,17 +483,17 @@ const Header = () => {
           <nav className="px-6 py-12 text-center">
             {/* Categories */}
             <div className="mb-20">
-              <div className="space-y-8">
-                <Link href="/health" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+              <div className="mobile-menu-categories">
+                <Link href="/health" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">Health</span>
                 </Link>
-                <Link href="/ambition" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/ambition" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">Ambition</span>
                 </Link>
-                <Link href="/relationship" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/relationship" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">Relationship</span>
                 </Link>
-                <Link href="/money" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/money" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">Money</span>
                 </Link>
               </div>
@@ -501,11 +501,11 @@ const Header = () => {
 
             {/* More Links */}
             <div className="mb-20 pt-10">
-              <div className="space-y-8">
-                <Link href="/about" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+              <div className="mobile-menu-categories">
+                <Link href="/about" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">About</span>
                 </Link>
-                <Link href="/misc" className="block py-8 tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
+                <Link href="/misc" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
                   <span className="text-xl font-light tracking-wide">Misc</span>
                 </Link>
               </div>
