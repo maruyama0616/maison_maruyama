@@ -64,7 +64,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 60);
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -182,16 +182,20 @@ const Header = () => {
             </nav>
 
             {/* Center Section - Brand Logo/Text */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-              {/* Full Text Logo - Visible by default, hidden on scroll */}
+            <div className="absolute left-0 right-0 flex items-center justify-center h-full pointer-events-none">
+              {/* Full Text Logo - Hidden on scroll */}
               <div 
-                className={`absolute transition-all duration-500 ease-out ${
-                  isScrolled ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
+                className={`transition-all ${
+                  isScrolled ? 'opacity-0 transform translate-y-1 pointer-events-none' : 'opacity-100 transform translate-y-0'
                 }`}
+                style={{ 
+                  transitionDuration: 'var(--duration-normal)',
+                  transitionTimingFunction: 'var(--easing)'
+                }}
               >
-                <Link href="/" className="flex items-center pointer-events-auto px-2 py-1 rounded-lg hover:bg-black/5 focus:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors duration-200">
+                <Link href="/" className="flex items-center pointer-events-auto">
                   <span 
-                    className="text-lg font-bold tracking-wider whitespace-nowrap"
+                    className="text-lg font-bold tracking-wide"
                     style={{ 
                       color: 'var(--text-primary)',
                       fontFamily: 'var(--font-brand)',
@@ -203,20 +207,23 @@ const Header = () => {
                 </Link>
               </div>
               
-              {/* Logo Image - Hidden by default, shown on scroll */}
+              {/* Logo Image - Shown on scroll */}
               <div 
-                className={`absolute transition-all duration-500 ease-out ${
-                  isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                className={`transition-all ${
+                  isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
                 }`}
+                style={{ 
+                  transitionDuration: 'var(--duration-normal)',
+                  transitionTimingFunction: 'var(--easing)'
+                }}
               >
-                <Link href="/" className="flex items-center justify-center w-16 h-16 pointer-events-auto rounded-lg hover:bg-black/5 focus:bg-black/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 transition-colors duration-200">
+                <Link href="/" className="flex items-center justify-center h-16 pointer-events-auto">
                   <Image
                     src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
                     alt="MARUYAMA"
                     width={48}
                     height={48}
                     className="object-contain"
-                    priority
                   />
                 </Link>
               </div>
