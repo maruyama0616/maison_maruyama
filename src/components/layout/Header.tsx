@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ThemeSwitch from '@/components/ui/ThemeSwitch';
 import SearchModal from '@/components/ui/SearchModal';
+import MobileMenu from '@/components/ui/MobileMenu';
 import { useTheme } from '@/contexts/ThemeContext';
 
 interface SearchResult {
@@ -268,6 +269,8 @@ const Header = () => {
                 className="tap-target tap-highlight relative"
                 style={{ color: 'var(--text-primary)' }}
                 aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <div className="relative w-6 h-6 flex items-center justify-center">
                   {/* Hamburger Icon */}
@@ -468,56 +471,8 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Header-Expanding Menu */}
-      <div className={`md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${
-        isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <div 
-          className="island-container mx-4 mt-2"
-          style={{ 
-            backgroundColor: 'var(--island-background)',
-            borderRadius: 'var(--radius-lg)'
-          }}
-        >
-          {/* Menu Content */}
-          <nav className="px-6 py-6 text-center">
-            {/* Categories */}
-            <div className="mb-8">
-              <div className="mobile-menu-categories">
-                <Link href="/health" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">Health</span>
-                </Link>
-                <Link href="/ambition" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">Ambition</span>
-                </Link>
-                <Link href="/relationship" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">Relationship</span>
-                </Link>
-                <Link href="/money" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">Money</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* More Links */}
-            <div className="mb-8 pt-4">
-              <div className="mobile-menu-categories">
-                <Link href="/about" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">About</span>
-                </Link>
-                <Link href="/misc" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-lg font-light tracking-wide">Misc</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Theme Switch */}
-            <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
-              <ThemeSwitch preventMenuClose={true} />
-            </div>
-          </nav>
-        </div>
-      </div>
+      {/* Glass Mobile Menu */}
+      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
 
       {/* Mobile Search Bar - Expanding Header */}
       <div className={`md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${

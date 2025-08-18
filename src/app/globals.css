@@ -323,14 +323,7 @@ body {
   margin-left: 1rem; /* 16px - balanced spacing with increased padding */
 }
 
-.mobile-menu-categories > * + * {
-  margin-top: 1rem; /* 16px - 縮小されたスペーシング */
-}
-
-.mobile-menu-item {
-  padding-top: 1rem; /* 16px - 縮小されたパディング */
-  padding-bottom: 1rem;
-}
+/* 古いモバイルメニュー用CSSは削除済み - 新しいMobileMenuコンポーネントを使用 */
 
 /* Custom utility classes */
 .line-clamp-3 {
@@ -406,5 +399,79 @@ body {
 @media (min-width: 1024px) {
   .text-spacing {
     margin-bottom: 1.5rem;
+  }
+}
+
+/* Glass Mobile Menu Styles */
+:root {
+  --glass-bg: rgba(30, 30, 32, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-fg: #EDEDED;
+  --glass-muted: #A1A1AA;
+}
+
+[data-theme="light"] {
+  --glass-bg: rgba(248, 250, 252, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-fg: #1E293B;
+  --glass-muted: #64748B;
+}
+
+/* Glass effect with fallback */
+.bg-glass {
+  background-color: var(--glass-bg);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .bg-glass {
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+  }
+}
+
+.border-glass-border {
+  border-color: var(--glass-border);
+}
+
+/* Mobile Menu Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes slideUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .transition-all,
+  .transition-opacity,
+  .transition-transform {
+    transition: none !important;
+    animation: none !important;
   }
 }
