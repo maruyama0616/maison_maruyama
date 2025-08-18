@@ -154,7 +154,7 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 safe-area-top px-4 md:px-6 lg:px-8">
         {/* Desktop Navigation */}
         <div className="hidden md:block">
-          <div className="island-container h-16 flex items-center justify-between px-20">
+          <div className="island-container h-16 flex items-center justify-between px-8 md:px-12 lg:px-20 xl:px-28">
             {/* Left Section - Main Categories */}
             <nav className="flex items-center header-nav-left">
               <Link href="/health"
@@ -180,7 +180,7 @@ const Header = () => {
             </nav>
 
             {/* Center Section - Brand Logo/Text */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               {/* Full Text Logo - Hidden on scroll */}
               <div 
                 className={`transition-all ${
@@ -191,7 +191,7 @@ const Header = () => {
                   transitionTimingFunction: 'var(--easing)'
                 }}
               >
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-center pointer-events-auto">
                   <span 
                     className="text-lg font-bold tracking-wide"
                     style={{ 
@@ -207,7 +207,7 @@ const Header = () => {
               
               {/* Logo Image - Shown on scroll */}
               <div 
-                className={`absolute -top-2 left-1/2 transform -translate-x-1/2 transition-all ${
+                className={`transition-all ${
                   isScrolled ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform -translate-y-1 pointer-events-none'
                 }`}
                 style={{ 
@@ -215,7 +215,7 @@ const Header = () => {
                   transitionTimingFunction: 'var(--easing)'
                 }}
               >
-                <Link href="/" className="flex items-center justify-center h-16">
+                <Link href="/" className="flex items-center justify-center h-16 pointer-events-auto">
                   <Image
                     src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
                     alt="MARUYAMA"

@@ -56,12 +56,12 @@ export default async function Home() {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Popular Posts Carousel */}
       <section className="w-full section-spacing">
-        <div className="container-fixed">
+        <div className="page">
           <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             POPULAR POSTS
           </h2>
-          <div className="max-w-4xl mx-auto fade-in-delay-1">
+          <div className="popular-wrapper fade-in-delay-1">
             <Carousel items={popularPosts} />
           </div>
         </div>
@@ -69,7 +69,7 @@ export default async function Home() {
 
       {/* Latest Posts */}
       <section className="w-full section-spacing">
-        <div className="container-fixed">
+        <div className="page">
           <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             LATEST POSTS
@@ -93,7 +93,7 @@ export default async function Home() {
 
       {/* Category Navigation */}
       <section className="w-full section-spacing">
-        <div className="container-fixed">
+        <div className="page">
           <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
               style={{ color: 'var(--text-primary)' }}>
             CATEGORIES
@@ -220,7 +220,7 @@ export default async function Home() {
 
       {/* About & Misc Navigation */}
       <section className="w-full section-spacing">
-        <div className="container-fixed">
+        <div className="page">
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <Link href="/about" className="group">
               <div className="radius-lg card-spacing text-center hover-subtle transition-opacity"

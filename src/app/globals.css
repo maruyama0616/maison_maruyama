@@ -64,7 +64,7 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable; /* Windows Chrome左寄り対策 */
+  scrollbar-gutter: stable both-edges; /* Chrome対応、左右の視覚ズレ防止 */
 }
 
 body {
@@ -141,6 +141,20 @@ body {
 }
 
 /* Layout Containers */
+.page {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.popular-wrapper {
+  width: min(1200px, 100% - clamp(32px, 6vw, 64px));
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  overflow-x: clip;
+}
 .container-fixed {
   width: 100%; /* 100vw廃止 */
   max-width: 1200px;
