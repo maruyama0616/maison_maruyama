@@ -6,6 +6,7 @@ import Image from 'next/image';
 import ThemeSwitch from '@/components/ui/ThemeSwitch';
 import SearchModal from '@/components/ui/SearchModal';
 import MobileMenu from '@/components/ui/MobileMenu';
+import MobileIslandMenu from '@/components/ui/MobileIslandMenu';
 import { useTheme } from '@/contexts/ThemeContext';
 
 interface SearchResult {
@@ -259,8 +260,8 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="block md:hidden">
+        {/* Mobile Navigation - Hidden, replaced by Island Menu */}
+        <div className="hidden md:hidden">
           <div className="island-container h-14 flex items-center justify-between px-4">
             {/* Left Zone - Hamburger + Search */}
             <div className="flex items-center space-x-2">
@@ -471,8 +472,15 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Glass Mobile Menu */}
-      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+      {/* Island Mobile Menu (Maison Margiela / Apple Style) */}
+      <div className="block md:hidden">
+        <MobileIslandMenu isOpen={isMenuOpen} onToggle={toggleMenu} />
+      </div>
+
+      {/* Glass Mobile Menu - Hidden for now, keeping as fallback */}
+      <div className="hidden">
+        <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+      </div>
 
       {/* Mobile Search Bar - Expanding Header */}
       <div className={`md:hidden fixed top-14 left-0 right-0 z-40 overflow-hidden transition-all duration-500 ease-in-out ${

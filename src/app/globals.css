@@ -475,3 +475,153 @@ body {
     animation: none !important;
   }
 }
+
+/* Island Menu Styles - Maison Margiela / Apple Inspired */
+:root {
+  --island-bg: rgba(245, 245, 247, 0.7);
+  --island-fg: #111216;
+  --island-muted: #6B7280;
+  --island-border: rgba(17, 18, 22, 0.08);
+}
+
+[data-theme="dark"] {
+  --island-bg: rgba(24, 24, 28, 0.6);
+  --island-fg: #EDEDED;
+  --island-muted: #9CA3AF;
+  --island-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Island Container */
+.island-container {
+  background-color: var(--island-bg);
+  border: 1px solid var(--island-border);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  color: var(--island-fg);
+  min-width: 320px;
+  max-width: 380px;
+  width: 90vw;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .island-container {
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+  }
+}
+
+/* Menu Sheet - extends from island */
+.menu-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% - 1px); /* -1px to overlap border */
+  background-color: var(--island-bg);
+  border: 1px solid var(--island-border);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  max-height: 72vh;
+  overflow-y: auto;
+  animation: expandSheet 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .menu-sheet {
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+  }
+}
+
+/* Menu Items */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 48px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--island-fg);
+  border-radius: 12px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0.9;
+}
+
+.menu-item:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.menu-item:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 1px;
+}
+
+[data-theme="dark"] .menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .menu-item:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Island Bounce Animation */
+@keyframes island-bounce {
+  0% { transform: translateX(-50%) scaleY(1); }
+  25% { transform: translateX(-50%) scaleY(1.04); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+.animate-island-bounce {
+  animation: island-bounce 120ms ease-out;
+}
+
+/* Sheet Expand Animation */
+@keyframes expandSheet {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 72vh;
+    opacity: 1;
+  }
+}
+
+/* Stagger Animation for Menu Items */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .menu-sheet {
+    animation: fadeIn 200ms ease both;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .animate-island-bounce {
+    animation: none;
+  }
+  
+  .menu-item {
+    animation: fadeIn 200ms ease both !important;
+  }
+}
