@@ -480,39 +480,39 @@ const Header = () => {
           }}
         >
           {/* Menu Content */}
-          <nav className="px-6 py-12 text-center">
+          <nav className="px-6 py-6 text-center">
             {/* Categories */}
-            <div className="mb-20">
+            <div className="mb-8">
               <div className="mobile-menu-categories">
                 <Link href="/health" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">Health</span>
+                  <span className="text-lg font-light tracking-wide">Health</span>
                 </Link>
                 <Link href="/ambition" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">Ambition</span>
+                  <span className="text-lg font-light tracking-wide">Ambition</span>
                 </Link>
                 <Link href="/relationship" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">Relationship</span>
+                  <span className="text-lg font-light tracking-wide">Relationship</span>
                 </Link>
                 <Link href="/money" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">Money</span>
+                  <span className="text-lg font-light tracking-wide">Money</span>
                 </Link>
               </div>
             </div>
 
             {/* More Links */}
-            <div className="mb-20 pt-10">
+            <div className="mb-8 pt-4">
               <div className="mobile-menu-categories">
                 <Link href="/about" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">About</span>
+                  <span className="text-lg font-light tracking-wide">About</span>
                 </Link>
                 <Link href="/misc" className="block mobile-menu-item tap-highlight" style={{ color: 'var(--text-primary)' }} onClick={closeMenu}>
-                  <span className="text-xl font-light tracking-wide">Misc</span>
+                  <span className="text-lg font-light tracking-wide">Misc</span>
                 </Link>
               </div>
             </div>
 
             {/* Theme Switch */}
-            <div className="pt-8 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
+            <div className="pt-4 border-t border-opacity-20" style={{ borderColor: 'var(--text-muted)' }}>
               <ThemeSwitch preventMenuClose={true} />
             </div>
           </nav>

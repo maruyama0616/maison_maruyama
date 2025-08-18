@@ -324,12 +324,12 @@ body {
 }
 
 .mobile-menu-categories > * + * {
-  margin-top: 2rem; /* 32px - space-y-8 equivalent */
+  margin-top: 1rem; /* 16px - 縮小されたスペーシング */
 }
 
 .mobile-menu-item {
-  padding-top: 2rem; /* 32px - py-8 equivalent */
-  padding-bottom: 2rem;
+  padding-top: 1rem; /* 16px - 縮小されたパディング */
+  padding-bottom: 1rem;
 }
 
 /* Custom utility classes */
