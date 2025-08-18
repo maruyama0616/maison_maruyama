@@ -95,40 +95,22 @@ export default function Carousel({ items, autoPlay = true, autoPlayInterval = 50
         {items.map((item, index) => (
           <div key={item.id} className="w-full flex-shrink-0">
             <Link href={`/${item.category}/${item.slug}`} className="block group">
-              <div className="relative aspect-[16/9] overflow-hidden radius-lg">
-                <div 
-                  className="w-full h-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                  style={{ 
-                    backgroundImage: item.imageUrl ? `url(${item.imageUrl})` : 'none',
-                    backgroundColor: item.imageUrl ? 'transparent' : 'var(--island-accent)'
-                  }}
-                >
-                  {!item.imageUrl && (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <p className="font-sans text-xs font-ultra-light tracking-widest uppercase"
-                         style={{ color: 'var(--text-muted)' }}>
-                        {item.title}
-                      </p>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <div className="mb-3">
-                    <span className="inline-block px-3 py-1.5 text-xs font-ultra-light tracking-wide uppercase rounded-sm"
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' }}>
-                      {item.category}
+              <div className="relative aspect-[16/9] w-full overflow-hidden radius-lg"
+                   style={{ backgroundColor: 'var(--island-background)' }}>
+                {item.imageUrl ? (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${item.imageUrl})` }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center"
+                       style={{ backgroundColor: 'var(--island-accent)' }}>
+                    <span className="font-sans text-xs font-ultra-light tracking-widest uppercase"
+                          style={{ color: 'var(--text-secondary)' }}>
+                      NO IMAGE
                     </span>
                   </div>
-                  <h3 className="font-serif text-lg md:text-xl font-light text-white mb-3 line-clamp-2 leading-relaxed">
-                    {item.title}
-                  </h3>
-                  <p className="font-sans text-sm font-light text-white/80 line-clamp-2 leading-relaxed">
-                    {item.excerpt}
-                  </p>
-                </div>
+                )}
               </div>
             </Link>
           </div>

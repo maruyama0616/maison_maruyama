@@ -1,5 +1,9 @@
 import Link from 'next/link';
 import Carousel from '@/components/ui/Carousel';
+import PostCard from '@/components/blog/PostCard';
+import { client } from '@/lib/sanity.client';
+import { postsQuery } from '@/lib/sanity.queries';
+import { Post } from '@/types/sanity';
 
 const popularPosts = [
   {
@@ -36,7 +40,18 @@ const popularPosts = [
   }
 ];
 
-export default function Home() {
+async function getLatestPosts(): Promise<Post[]> {
+  try {
+    const posts = await client.fetch(postsQuery);
+    return posts.slice(0, 6); // 最新6件を取得
+  } catch (error) {
+    console.error('Failed to fetch latest posts:', error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const latestPosts = await getLatestPosts();
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Popular Posts Carousel */}
@@ -49,6 +64,30 @@ export default function Home() {
           <div className="max-w-4xl mx-auto fade-in-delay-1">
             <Carousel items={popularPosts} />
           </div>
+        </div>
+      </section>
+
+      {/* Latest Posts */}
+      <section className="w-full section-spacing">
+        <div className="container-fixed">
+          <h2 className="font-serif text-sm small-caps font-light mb-12 md:mb-16 text-center tracking-wider"
+              style={{ color: 'var(--text-primary)' }}>
+            LATEST POSTS
+          </h2>
+          {latestPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+              {latestPosts.map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="font-sans text-sm font-light"
+                 style={{ color: 'var(--text-secondary)' }}>
+                記事がまだありません
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
