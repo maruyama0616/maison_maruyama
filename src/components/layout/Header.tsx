@@ -180,7 +180,7 @@ const Header = () => {
             </nav>
 
             {/* Center Section - Brand Logo/Text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
               {/* Full Text Logo - Hidden on scroll */}
               <div 
                 className={`transition-all ${
@@ -191,7 +191,7 @@ const Header = () => {
                   transitionTimingFunction: 'var(--easing)'
                 }}
               >
-                <Link href="/" className="flex items-center pointer-events-auto">
+                <Link href="/" className="flex items-center">
                   <span 
                     className="text-lg font-bold tracking-wide"
                     style={{ 
@@ -215,7 +215,7 @@ const Header = () => {
                   transitionTimingFunction: 'var(--easing)'
                 }}
               >
-                <Link href="/" className="flex items-center justify-center h-16 pointer-events-auto">
+                <Link href="/" className="flex items-center justify-center h-16">
                   <Image
                     src={theme === 'light' ? '/images/logo/MARUYAMA LOGO BK.png' : '/images/logo/MARUYAMA LOGO.png'}
                     alt="MARUYAMA"
