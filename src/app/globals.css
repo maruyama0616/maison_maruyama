@@ -64,6 +64,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable; /* Windows Chrome左寄り対策 */
 }
 
 body {
@@ -75,6 +76,7 @@ body {
   letter-spacing: 0.025em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip; /* 横スクロール防止 */
 }
 
 /* Typography Classes */
@@ -140,43 +142,44 @@ body {
 
 /* Layout Containers */
 .container-fixed {
+  width: 100%; /* 100vw廃止 */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding-inline: 2rem; /* padding管理をpadding-inlineに */
 }
 
 @media (min-width: 768px) {
   .container-fixed {
     max-width: 1200px;
-    padding: 0 3rem;
+    padding-inline: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container-fixed {
     max-width: 1280px;
-    padding: 0 4rem;
+    padding-inline: 4rem;
   }
 }
 
 @media (min-width: 1280px) {
   .container-fixed {
     max-width: 1400px;
-    padding: 0 5rem;
+    padding-inline: 5rem;
   }
 }
 
 @media (min-width: 1920px) {
   .container-fixed {
     max-width: 1600px;
-    padding: 0 6rem;
+    padding-inline: 6rem;
   }
 }
 
 @media (min-width: 2560px) {
   .container-fixed {
     max-width: 1800px;
-    padding: 0 8rem;
+    padding-inline: 8rem;
   }
 }
 
