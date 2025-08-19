@@ -45,17 +45,14 @@ const NewHeader: React.FC = () => {
   return (
     <>
       {/* Desktop Header (1024px+) */}
-      <motion.header 
-        className="hidden lg:block fixed top-0 left-0 right-0 z-50 px-8 py-6"
-        style={{
-          backgroundColor: 'var(--header-bg)',
-          borderBottom: `1px solid var(--border)`
-        }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="hidden lg:block header-container">
+        <motion.header 
+          className={`header-island ${isScrolled ? 'scrolled' : ''}`}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex items-center justify-between">
           {/* Left Side Menu */}
           <nav className="flex items-center space-x-8">
             <Link 
@@ -224,21 +221,19 @@ const NewHeader: React.FC = () => {
             {/* Theme Switch */}
             <ThemeSwitch />
           </div>
-        </div>
-      </motion.header>
+          </div>
+        </motion.header>
+      </div>
 
       {/* Mobile Header (< 768px) */}
-      <motion.header 
-        className="lg:hidden fixed top-0 left-0 right-0 z-50 px-4 py-4"
-        style={{
-          backgroundColor: 'var(--header-bg)',
-          borderBottom: `1px solid var(--border)`
-        }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="flex items-center justify-between">
+      <div className="lg:hidden header-container">
+        <motion.header 
+          className={`header-island ${isScrolled ? 'scrolled' : ''}`}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <div className="flex items-center justify-between">
           {/* Left Side - Hamburger & Search */}
           <div className="flex items-center space-x-3">
             <button
@@ -317,11 +312,12 @@ const NewHeader: React.FC = () => {
             </Link>
             <ThemeSwitch />
           </div>
-        </div>
-      </motion.header>
+          </div>
+        </motion.header>
+      </div>
 
       {/* Header Spacer */}
-      <div className="h-16 lg:h-20"></div>
+      <div className="h-20 lg:h-24"></div>
 
       {/* Search Overlay */}
       <SearchOverlay 

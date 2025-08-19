@@ -17,6 +17,12 @@
   --search-border: #e5e5e5;
   --overlay-bg: rgba(0, 0, 0, 0.8);
   
+  /* Island Header Design Tokens */
+  --island-header-bg: rgba(255, 255, 255, 0.8);
+  --island-header-border: rgba(255, 255, 255, 0.2);
+  --island-header-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --island-header-shadow-scrolled: 0 4px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.08);
+  
   /* Mobile-First Island Design Tokens */
   --page-background: #F2F1EC;    /* ごく淡いウォームグレー（薄い砂色） */
   --island-background: #F7F6F2;  /* 島の背景色（わずかに明るいウォームグレー） */
@@ -52,6 +58,12 @@
   --search-bg: #1a1a1a;
   --search-border: #333333;
   --overlay-bg: rgba(0, 0, 0, 0.8);
+  
+  /* Island Header Dark Mode */
+  --island-header-bg: rgba(0, 0, 0, 0.8);
+  --island-header-border: rgba(255, 255, 255, 0.1);
+  --island-header-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --island-header-shadow-scrolled: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.2);
   
   --page-background: #1a1a1a;
   --island-background: #2a2a2a;
@@ -636,5 +648,61 @@ body {
   
   .menu-item {
     animation: fadeIn 200ms ease both !important;
+  }
+}
+
+/* Island Header Styles */
+.header-container {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1200px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header-island {
+  background: var(--island-header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid var(--island-header-border);
+  box-shadow: var(--island-header-shadow);
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+  will-change: transform, border-radius, padding, box-shadow;
+}
+
+.header-island.scrolled {
+  border-radius: 20px;
+  padding: 8px 20px;
+  box-shadow: var(--island-header-shadow-scrolled);
+}
+
+/* Mobile Island Header */
+@media (max-width: 768px) {
+  .header-container {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+  
+  .header-island {
+    border-radius: 20px;
+    padding: 10px 16px;
+  }
+  
+  .header-island.scrolled {
+    border-radius: 16px;
+    padding: 8px 12px;
+  }
+}
+
+/* Support for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  .header-island {
+    background: var(--header-bg);
+    border: 1px solid var(--border);
   }
 }
