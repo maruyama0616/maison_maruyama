@@ -293,14 +293,13 @@ const NewHeader: React.FC = () => {
           <div className="flex items-center space-x-3">
             <Link 
               href="/shop"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-secondary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="p-2 hover:opacity-70 transition-opacity duration-200"
+              style={{ color: 'var(--text-primary)' }}
+              aria-label="ショップ"
             >
-              Shop
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM10 6a2 2 0 0 1 4 0v1h-4V6z"/>
+              </svg>
             </Link>
             <ThemeSwitch />
           </div>
