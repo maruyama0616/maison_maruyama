@@ -776,13 +776,14 @@ body {
   }
 }
 
-/* Header Button Styles */
+/* Header Button Styles - Complete Background Transparency */
 .header-menu-button {
-  background: rgba(0, 0, 0, 0.05);
+  background: transparent !important;
+  background-color: transparent !important;
   border-radius: 12px;
   padding: 8px 16px;
   transition: all 0.3s ease;
-  border: none;
+  border: none !important;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -790,49 +791,58 @@ body {
   font-weight: 500;
   font-size: 14px;
   color: var(--text-primary);
+  box-shadow: none !important;
 }
 
 .header-menu-button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-1px);
 }
 
 .header-action-button {
-  background: rgba(0, 0, 0, 0.05);
+  background: transparent !important;
+  background-color: transparent !important;
   border-radius: 10px;
   min-width: 40px;
   min-height: 40px;
   padding: 8px;
   transition: all 0.3s ease;
-  border: none;
+  border: none !important;
   cursor: pointer;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
+  box-shadow: none !important;
 }
 
 .header-action-button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-1px);
 }
 
 /* Dark mode button styles */
 [data-theme="dark"] .header-menu-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent !important;
+  background-color: transparent !important;
   color: var(--text-primary);
 }
 
 [data-theme="dark"] .header-menu-button:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 [data-theme="dark"] .header-action-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent !important;
+  background-color: transparent !important;
   color: var(--text-secondary);
 }
 
 [data-theme="dark"] .header-action-button:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }

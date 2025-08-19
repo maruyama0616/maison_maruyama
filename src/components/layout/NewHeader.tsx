@@ -60,30 +60,35 @@ const NewHeader: React.FC = () => {
             <Link 
               href="/health"
               className="header-menu-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
             >
               Health
             </Link>
             <Link 
               href="/ambition"
               className="header-menu-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
             >
               Ambition
             </Link>
             <Link 
               href="/relationship"
               className="header-menu-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
             >
               Relationship
             </Link>
             <Link 
               href="/money"
               className="header-menu-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
             >
               Money
             </Link>
             <Link 
               href="/about"
               className="header-menu-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
             >
               Concept
             </Link>
@@ -138,6 +143,7 @@ const NewHeader: React.FC = () => {
             <button
               onClick={() => setIsSearchOpen(true)}
               className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
               aria-label="検索"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,6 +155,7 @@ const NewHeader: React.FC = () => {
             <Link 
               href="/shop"
               className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
               aria-label="ショップ"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,6 +169,7 @@ const NewHeader: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
               aria-label="Twitter"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -173,6 +181,7 @@ const NewHeader: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -184,6 +193,7 @@ const NewHeader: React.FC = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
               aria-label="YouTube"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -192,7 +202,10 @@ const NewHeader: React.FC = () => {
             </a>
 
             {/* Theme Switch */}
-            <div className="header-action-button">
+            <div 
+              className="header-action-button"
+              style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
+            >
               <ThemeSwitch />
             </div>
           </div>
