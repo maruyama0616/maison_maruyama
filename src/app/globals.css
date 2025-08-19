@@ -690,12 +690,12 @@ body {
   
   .header-island {
     border-radius: 20px;
-    padding: 8px 16px; /* 上下8px, 左右16px */
+    padding: 12px 16px; /* 上下12px, 左右16pxに拡大 */
   }
   
   .header-island.scrolled {
     border-radius: 16px;
-    padding: 6px 12px; /* さらに縮小 */
+    padding: 10px 12px; /* スクロール時も10pxに拡大 */
   }
 }
 
