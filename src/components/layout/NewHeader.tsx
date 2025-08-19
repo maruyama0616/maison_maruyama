@@ -130,15 +130,15 @@ const NewHeader: React.FC = () => {
                       <Image
                         src={theme === 'dark' ? '/images/logo/MARUYAMA LOGO.png' : '/images/logo/MARUYAMA LOGO BK.png'}
                         alt="MARUYAMA"
-                        width={32}
-                        height={24}
+                        width={28}
+                        height={20}
                         className="object-contain"
                       />
                     </motion.div>
                   ) : (
                     <motion.span
                       key="logo-text"
-                      className="text-2xl font-bold tracking-wide"
+                      className="text-lg font-bold tracking-wide"
                       style={{ 
                         color: 'var(--text-primary)',
                         fontFamily: 'M PLUS 1p, sans-serif',
@@ -280,15 +280,15 @@ const NewHeader: React.FC = () => {
                       <Image
                         src={theme === 'dark' ? '/images/logo/MARUYAMA LOGO.png' : '/images/logo/MARUYAMA LOGO BK.png'}
                         alt="MARUYAMA"
-                        width={24}
-                        height={18}
+                        width={22}
+                        height={16}
                         className="object-contain"
                       />
                     </motion.div>
                   ) : (
                     <motion.span
                       key="logo-text"
-                      className="text-xl font-bold tracking-wide"
+                      className="text-base font-bold tracking-wide"
                       style={{ 
                         color: 'var(--text-primary)',
                         fontFamily: 'M PLUS 1p, sans-serif',
