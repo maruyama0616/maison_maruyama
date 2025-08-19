@@ -699,9 +699,9 @@ body {
   }
 }
 
-/* Mobile Header Content Optimization - Expanded Sizes */
+/* Mobile Header Content Optimization - プロンプト仕様準拠 */
 @media (max-width: 768px) {
-  /* モバイルヘッダーコンテンツ - 要素サイズ拡大 */
+  /* モバイルヘッダーコンテンツ */
   .mobile-header-content {
     display: flex;
     align-items: center;
@@ -709,12 +709,63 @@ body {
     gap: 0.5rem; /* 8px */
   }
   
-  /* モバイル版ボタン共通設定 - 36px拡大 */
+  /* モバイル版アクションボタン - プロンプト仕様 */
+  .mobile-action-button {
+    padding: 0.5rem !important; /* 8px パディング */
+    min-width: 36px !important; /* ボタンサイズ36px */
+    min-height: 36px !important; /* ボタンサイズ36px */
+    background: transparent !important; /* 強制的に透明化 */
+    background-color: transparent !important;
+    border-radius: 8px;
+    border: 1px solid transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: none !important; /* シャドウも削除 */
+  }
+  
+  .mobile-action-button:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-theme="dark"] .mobile-action-button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* モバイル版アイコンサイズ - 18px */
+  .mobile-action-button svg,
+  .mobile-action-button img {
+    width: 18px !important; /* アイコンサイズ拡大 */
+    height: 18px !important; /* アイコンサイズ拡大 */
+  }
+  
+  /* ハンバーガーアイコン専用 - 20x20px */
+  .hamburger {
+    width: 20px !important; /* ハンバーガーサイズ拡大 */
+    height: 20px !important; /* ハンバーガーサイズ拡大 */
+  }
+  
+  .hamburger-line {
+    width: 16px !important; /* ハンバーガーライン拡大 */
+    height: 2px !important; /* ハンバーガーライン拡大 */
+  }
+  
+  .hamburger-line:not(:last-child) {
+    margin-bottom: 4px !important; /* ハンバーガーライン間隔拡大 */
+  }
+  
+  /* モバイル版汎用ボタンセレクタ */
   .header-island .flex button,
   .header-island .flex a {
-    padding: 8px !important; /* 拡大パディング */
-    min-width: 36px !important; /* ボタンサイズ拡大 */
-    min-height: 36px !important; /* ボタンサイズ拡大 */
+    padding: 8px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -722,30 +773,10 @@ body {
     transition: all 0.2s ease;
   }
   
-  /* モバイル版アイコンサイズ拡大 - 18px */
   .header-island .flex button svg,
   .header-island .flex a svg {
-    width: 18px !important; /* アイコンサイズ拡大 */
-    height: 18px !important; /* アイコンサイズ拡大 */
-  }
-  
-  /* ハンバーガーアイコン専用 - 20x20px */
-  .header-island button svg[viewBox="0 0 24 24"]:has(path[d*="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"]) {
-    width: 20px !important; /* ハンバーガーサイズ */
-    height: 20px !important; /* ハンバーガーサイズ */
-  }
-  
-  /* ホバー効果 */
-  .header-island .flex button:hover,
-  .header-island .flex a:hover {
-    background: rgba(0, 0, 0, 0.08);
-    opacity: 0.7;
-  }
-  
-  [data-theme="dark"] .header-island .flex button:hover,
-  [data-theme="dark"] .header-island .flex a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    opacity: 0.7;
+    width: 18px !important;
+    height: 18px !important;
   }
 }
 
