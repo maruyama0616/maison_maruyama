@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useScrollY } from '@/hooks/useScrollY';
-import MountainLogo from '@/components/ui/MountainLogo';
+import { useTheme } from '@/contexts/ThemeContext';
 import SearchOverlay from '@/components/ui/SearchOverlay';
 import HamburgerMenu from '@/components/ui/HamburgerMenu';
 import ThemeSwitch from '@/components/ui/ThemeSwitch';
@@ -12,6 +13,7 @@ import ThemeSwitch from '@/components/ui/ThemeSwitch';
 
 const NewHeader: React.FC = () => {
   const scrollY = useScrollY();
+  const { theme } = useTheme();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isScrolled = scrollY > 50;
@@ -116,37 +118,41 @@ const NewHeader: React.FC = () => {
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link href="/" className="block">
               <div className="relative h-8 flex items-center justify-center">
-                {/* Text Logo */}
-                <motion.div
-                  initial={{ opacity: 1, y: 0 }}
-                  animate={isScrolled ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="absolute"
-                >
-                  <span 
-                    className="text-2xl font-bold tracking-wide"
-                    style={{ 
-                      color: 'var(--text-primary)',
-                      fontFamily: 'M PLUS 1p, sans-serif',
-                      fontWeight: '700'
-                    }}
-                  >
-                    MARUYAMA
-                  </span>
-                </motion.div>
-
-                {/* Mountain Logo */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3, ease: "easeOut", delay: isScrolled ? 0.1 : 0 }}
-                  className="absolute"
-                >
-                  <MountainLogo 
-                    className="w-8 h-6"
-                    style={{ color: 'var(--text-primary)' }}
-                  />
-                </motion.div>
+                <AnimatePresence mode="wait">
+                  {isScrolled ? (
+                    <motion.div
+                      key="logo-image"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image
+                        src={theme === 'dark' ? '/images/logo/MARUYAMA LOGO.png' : '/images/logo/MARUYAMA LOGO BK.png'}
+                        alt="MARUYAMA"
+                        width={32}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.span
+                      key="logo-text"
+                      className="text-2xl font-bold tracking-wide"
+                      style={{ 
+                        color: 'var(--text-primary)',
+                        fontFamily: 'M PLUS 1p, sans-serif',
+                        fontWeight: '700'
+                      }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      MARUYAMA
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
             </Link>
           </div>
@@ -262,37 +268,41 @@ const NewHeader: React.FC = () => {
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link href="/" className="block">
               <div className="relative h-6 flex items-center justify-center">
-                {/* Text Logo */}
-                <motion.div
-                  initial={{ opacity: 1, y: 0 }}
-                  animate={isScrolled ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="absolute"
-                >
-                  <span 
-                    className="text-xl font-bold tracking-wide"
-                    style={{ 
-                      color: 'var(--text-primary)',
-                      fontFamily: 'M PLUS 1p, sans-serif',
-                      fontWeight: '700'
-                    }}
-                  >
-                    MARUYAMA
-                  </span>
-                </motion.div>
-
-                {/* Mountain Logo */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isScrolled ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                  transition={{ duration: 0.3, ease: "easeOut", delay: isScrolled ? 0.1 : 0 }}
-                  className="absolute"
-                >
-                  <MountainLogo 
-                    className="w-6 h-5"
-                    style={{ color: 'var(--text-primary)' }}
-                  />
-                </motion.div>
+                <AnimatePresence mode="wait">
+                  {isScrolled ? (
+                    <motion.div
+                      key="logo-image"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image
+                        src={theme === 'dark' ? '/images/logo/MARUYAMA LOGO.png' : '/images/logo/MARUYAMA LOGO BK.png'}
+                        alt="MARUYAMA"
+                        width={24}
+                        height={18}
+                        className="object-contain"
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.span
+                      key="logo-text"
+                      className="text-xl font-bold tracking-wide"
+                      style={{ 
+                        color: 'var(--text-primary)',
+                        fontFamily: 'M PLUS 1p, sans-serif',
+                        fontWeight: '700'
+                      }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      MARUYAMA
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </div>
             </Link>
           </div>
