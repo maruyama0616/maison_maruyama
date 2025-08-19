@@ -249,7 +249,7 @@ const NewHeader: React.FC = () => {
                       <Image
                         src={theme === 'dark' ? '/images/logo/MARUYAMA LOGO.png' : '/images/logo/MARUYAMA LOGO BK.png'}
                         alt="MARUYAMA"
-                        width={22}
+                        width={20}
                         height={16}
                         className="object-contain"
                       />
@@ -257,7 +257,7 @@ const NewHeader: React.FC = () => {
                   ) : (
                     <motion.span
                       key="logo-text"
-                      className="text-base font-bold tracking-wide"
+                      className="text-sm font-bold tracking-wide"
                       style={{ 
                         color: 'var(--text-primary)',
                         fontFamily: 'M PLUS 1p, sans-serif',

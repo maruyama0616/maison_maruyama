@@ -128,7 +128,11 @@ const SearchOverlay: React.FC<SearchOverlayProps> = ({ isOpen, onClose }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)'
+          }}
           onClick={onClose}
         >
           <motion.div
