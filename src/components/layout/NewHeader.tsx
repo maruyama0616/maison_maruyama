@@ -56,59 +56,34 @@ const NewHeader: React.FC = () => {
         >
           <div className="flex items-center justify-between">
           {/* Left Side Menu */}
-          <nav className="flex items-center space-x-8">
+          <nav className="flex items-center space-x-3">
             <Link 
               href="/health"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-menu-button"
             >
               Health
             </Link>
             <Link 
               href="/ambition"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-menu-button"
             >
               Ambition
             </Link>
             <Link 
               href="/relationship"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-menu-button"
             >
               Relationship
             </Link>
             <Link 
               href="/money"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-menu-button"
             >
               Money
             </Link>
             <Link 
               href="/about"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-menu-button"
             >
               Concept
             </Link>
@@ -158,12 +133,11 @@ const NewHeader: React.FC = () => {
           </div>
 
           {/* Right Side Functions */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-2">
             {/* Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center space-x-2 hover:opacity-70 transition-opacity duration-200"
-              style={{ color: 'var(--text-secondary)' }}
+              className="header-action-button"
               aria-label="検索"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,58 +148,53 @@ const NewHeader: React.FC = () => {
             {/* Shop Link */}
             <Link 
               href="/shop"
-              className="text-sm font-medium tracking-wide hover:opacity-70 transition-opacity duration-200"
-              style={{ 
-                color: 'var(--text-secondary)',
-                fontFamily: 'M PLUS 1p, sans-serif',
-                fontWeight: '500'
-              }}
+              className="header-action-button"
+              aria-label="ショップ"
             >
-              Shop
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
             </Link>
 
             {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              <a 
-                href="https://twitter.com/maruyama" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition-opacity duration-200"
-                style={{ color: 'var(--text-secondary)' }}
-                aria-label="Twitter"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
-              <a 
-                href="https://instagram.com/maruyama" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition-opacity duration-200"
-                style={{ color: 'var(--text-secondary)' }}
-                aria-label="Instagram"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.897 3.5 13.455 3.5 11.987s.698-2.909 1.626-3.704c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.795 1.626 2.236 1.626 3.704s-.698 2.91-1.626 3.704c-.875.807-2.026 1.297-3.323 1.297zm7.098 0c-1.297 0-2.448-.49-3.323-1.297-.928-.794-1.626-2.236-1.626-3.704s.698-2.909 1.626-3.704c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.795 1.626 2.236 1.626 3.704s-.698 2.91-1.626 3.704c-.875.807-2.026 1.297-3.323 1.297z"/>
-                </svg>
-              </a>
-              <a 
-                href="https://youtube.com/@maruyama" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-70 transition-opacity duration-200"
-                style={{ color: 'var(--text-secondary)' }}
-                aria-label="YouTube"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-            </div>
+            <a 
+              href="https://twitter.com/maruyama" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="header-action-button"
+              aria-label="Twitter"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://instagram.com/maruyama" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="header-action-button"
+              aria-label="Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.897 3.5 13.455 3.5 11.987s.698-2.909 1.626-3.704c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.795 1.626 2.236 1.626 3.704s-.698 2.91-1.626 3.704c-.875.807-2.026 1.297-3.323 1.297zm7.098 0c-1.297 0-2.448-.49-3.323-1.297-.928-.794-1.626-2.236-1.626-3.704s.698-2.909 1.626-3.704c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.795 1.626 2.236 1.626 3.704s-.698 2.91-1.626 3.704c-.875.807-2.026 1.297-3.323 1.297z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://youtube.com/@maruyama" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="header-action-button"
+              aria-label="YouTube"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
 
             {/* Theme Switch */}
-            <ThemeSwitch />
+            <div className="header-action-button">
+              <ThemeSwitch />
+            </div>
           </div>
           </div>
         </motion.header>

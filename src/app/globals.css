@@ -706,3 +706,64 @@ body {
     border: 1px solid var(--border);
   }
 }
+
+/* Header Button Styles */
+.header-menu-button {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.header-menu-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.header-action-button {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.header-action-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Dark mode button styles */
+[data-theme="dark"] .header-menu-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .header-menu-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .header-action-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .header-action-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
