@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, M_PLUS_1p } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -9,6 +9,12 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
+});
+
+const mPlus1p = M_PLUS_1p({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -41,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${playfairDisplay.variable} font-sans antialiased`}
+        className={`${playfairDisplay.variable} ${mPlus1p.variable} font-sans antialiased`}
         style={{ 
           backgroundColor: 'var(--page-background)', 
           color: 'var(--text-primary)' 

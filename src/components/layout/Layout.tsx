@@ -1,4 +1,4 @@
-import Header from './Header';
+import NewHeader from './NewHeader';
 import Footer from './Footer';
 
 interface LayoutProps {
@@ -8,7 +8,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
-      <Header />
+      <NewHeader />
       <main className="w-full">
         {children}
       </main>
