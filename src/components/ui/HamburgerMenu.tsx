@@ -48,9 +48,10 @@ const socialLinks = [
 ];
 
 
+
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -76,12 +77,25 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
                   {menuItems.map((item, index) => (
                     <motion.li
                       key={item.label}
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
-                        duration: 0.3, 
-                        ease: "easeOut" 
+                      initial={{ x: -30, y: 10, opacity: 0 }}
+                      animate={{ 
+                        x: 0, 
+                        y: 0, 
+                        opacity: 1,
+                        transition: {
+                          delay: index * 0.08, // 80msに調整
+                          duration: 0.4, // 400msに延長
+                          ease: [0.25, 0.46, 0.45, 0.94] // カスタムイージング
+                        }
+                      }}
+                      exit={{ 
+                        x: -30, 
+                        opacity: 0,
+                        transition: {
+                          delay: (4 - index) * 0.05, // 逆順で閉じる
+                          duration: 0.2,
+                          ease: "easeIn"
+                        }
                       }}
                     >
                       <Link
@@ -102,12 +116,13 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen, onClose }) => {
 
               {/* Social Links */}
               <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ x: -30, y: 10, opacity: 0 }}
+                animate={{ x: 0, y: 0, opacity: 1 }}
+                exit={{ x: -30, opacity: 0 }}
                 transition={{ 
-                  delay: menuItems.length * 0.1, 
-                  duration: 0.3, 
-                  ease: "easeOut" 
+                  delay: menuItems.length * 0.08, // 遅延調整
+                  duration: 0.4, // 時間統一
+                  ease: [0.25, 0.46, 0.45, 0.94] // カスタムイージング統一
                 }}
                 className="border-t pt-8"
                 style={{ borderColor: 'var(--border)' }}
