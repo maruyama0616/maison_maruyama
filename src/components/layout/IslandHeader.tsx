@@ -139,7 +139,7 @@ const YouTubeIcon = ({ size = 20 }) => (
 );
 
 // Logo Component
-const Logo = ({ isScrolled, isDarkMode, isMobile = false }) => {
+const Logo = ({ isScrolled, isDarkMode, isMobile = false }: { isScrolled: boolean; isDarkMode: boolean; isMobile?: boolean }) => {
   const logoImages = {
     light: '/images/logo/MARUYAMA LOGO BK.png',
     dark: '/images/logo/MARUYAMA LOGO.png'
@@ -320,14 +320,10 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 }}>
                   カテゴリ
                 </div>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '8px',
-                  '@media (max-width: 768px)': {
-                    gridTemplateColumns: '1fr'
-                  }
-                }}>
+                <div 
+                  className="grid grid-cols-2 md:grid-cols-2 gap-2"
+                  style={{ gap: '8px' }}
+                >
                   {['Health', 'Ambition', 'Relationship', 'Money'].map((category) => (
                     <Link
                       key={category}
