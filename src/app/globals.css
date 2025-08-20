@@ -703,10 +703,11 @@ body {
 @media (max-width: 768px) {
   /* モバイルヘッダーコンテンツ */
   .mobile-header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem; /* 8px */
+    display: flex !important;
+    align-items: center !important; /* 縦位置を強制的に中央揃え */
+    justify-content: space-between !important;
+    gap: 0.5rem !important; /* 8px */
+    height: 100% !important; /* 高さを親要素に合わせる */
   }
   
   /* モバイル版アクションボタン - プロンプト仕様 */
@@ -718,9 +719,9 @@ body {
     background-color: transparent !important;
     border-radius: 8px;
     border: 1px solid transparent !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important; /* 縦位置中央揃えを強制 */
+    justify-content: center !important; /* 横位置中央揃えを強制 */
     transition: all 0.2s ease;
     cursor: pointer;
     box-shadow: none !important; /* シャドウも削除 */
@@ -743,21 +744,41 @@ body {
   .mobile-action-button img {
     width: 18px !important; /* アイコンサイズ拡大 */
     height: 18px !important; /* アイコンサイズ拡大 */
+    display: block !important; /* インライン要素の余白を削除 */
+    vertical-align: middle !important; /* 縦位置調整 */
   }
   
   /* ハンバーガーアイコン専用 - 20x20px */
   .hamburger {
     width: 20px !important; /* ハンバーガーサイズ拡大 */
     height: 20px !important; /* ハンバーガーサイズ拡大 */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* 縦位置を強制的に中央揃え */
+    align-items: center !important; /* 横位置も中央揃え */
   }
   
   .hamburger-line {
     width: 16px !important; /* ハンバーガーライン拡大 */
     height: 2px !important; /* ハンバーガーライン拡大 */
+    display: block !important; /* ブロック要素として明確化 */
   }
   
   .hamburger-line:not(:last-child) {
     margin-bottom: 4px !important; /* ハンバーガーライン間隔拡大 */
+  }
+  
+  /* モバイル版ロゴ強化 */
+  .mobile-header-content .logo-text {
+    font-size: 14px !important; /* 16pxから縮小 */
+    font-weight: 700 !important;
+    line-height: 1 !important; /* ライン高さを1に固定 */
+  }
+  
+  .mobile-header-content .logo-image {
+    width: 26px !important; /* 20pxから拡大 */
+    height: 20px !important; /* 16pxから拡大 */
+    display: block !important; /* インライン要素の余白を削除 */
   }
   
   /* モバイル版汎用ボタンセレクタ */
