@@ -424,12 +424,12 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     closed: { 
       opacity: 0, 
       height: 0,
-      transition: { duration: 0.3, ease: 'easeInOut' }
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
     },
     open: { 
       opacity: 1, 
       height: '100vh',
-      transition: { duration: 0.3, ease: 'easeInOut' }
+      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
     }
   };
   
@@ -451,7 +451,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       transition: {
         delay: (4 - i) * 0.05,
         duration: 0.2,
-        ease: 'easeIn'
+        ease: [0.4, 0, 1, 1]
       }
     })
   };
