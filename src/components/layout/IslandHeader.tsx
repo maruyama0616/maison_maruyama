@@ -436,27 +436,14 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     }
   };
   
-  const menuItemAnimation = {
-    closed: { opacity: 0, x: -30, y: 10 },
-    open: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        delay: i * 0.08,
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }),
-    exit: (i: number) => ({
-      opacity: 0,
-      x: -30,
-      transition: {
-        delay: (4 - i) * 0.05,
-        duration: 0.2,
-        ease: "easeIn"
-      }
-    })
+  // Simplified animation without complex transitions
+  const menuItemVariants = {
+    hidden: { opacity: 0, x: -30, y: 10 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      y: 0
+    }
   };
 
   useEffect(() => {
@@ -496,8 +483,14 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item}
-                  custom={i}
-                  variants={menuItemAnimation}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  variants={menuItemVariants}
+                  transition={{
+                    delay: i * 0.08,
+                    duration: 0.4,
+                  }}
                 >
                   <Link
                     href={`/${item.toLowerCase()}`}
@@ -626,7 +619,7 @@ const IslandHeader = () => {
             borderRadius: isScrolled ? 20 : 24,
             padding: isScrolled ? '12px 24px' : '16px 32px'
           }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           
           {/* Desktop Layout */}
