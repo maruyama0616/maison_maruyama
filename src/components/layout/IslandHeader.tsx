@@ -423,13 +423,11 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   const menuAnimation = {
     closed: { 
       opacity: 0, 
-      height: 0,
-      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+      height: 0
     },
     open: { 
       opacity: 1, 
-      height: '100vh',
-      transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+      height: '100vh'
     }
   };
   
@@ -442,7 +440,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       transition: {
         delay: i * 0.08,
         duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: "easeOut"
       }
     }),
     exit: (i: number) => ({
@@ -451,7 +449,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       transition: {
         delay: (4 - i) * 0.05,
         duration: 0.2,
-        ease: [0.4, 0, 1, 1]
+        ease: "easeIn"
       }
     })
   };
@@ -476,6 +474,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           animate="open"
           exit="closed"
           variants={menuAnimation}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           className="fixed inset-0 z-50 bg-white"
           style={{ 
             top: '60px',
