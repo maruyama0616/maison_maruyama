@@ -1,4 +1,4 @@
-import NewHeader from './NewHeader';
+import IslandHeader from './IslandHeader';
 import Footer from './Footer';
 
 interface LayoutProps {
@@ -8,7 +8,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
-      <NewHeader />
+      <IslandHeader />
       <main className="w-full">
         {children}
       </main>
