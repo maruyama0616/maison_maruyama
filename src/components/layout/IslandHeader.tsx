@@ -72,7 +72,7 @@ const ThemeIcon = ({ size = 18, isDark = false }) => (
 );
 
 // Theme Toggle Component (Toggle Type)
-const ThemeToggle = ({ isDark, onToggle, size = 18 }) => (
+const ThemeToggle = ({ isDark, onToggle }: { isDark: boolean; onToggle: () => void; size?: number }) => (
   <button 
     className="header-action-button"
     onClick={onToggle}
@@ -197,7 +197,7 @@ const Logo = ({ isScrolled, isDarkMode, isMobile = false }) => {
 };
 
 // Search Overlay Component
-const SearchOverlay = ({ isOpen, onClose }) => {
+const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -421,7 +421,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 };
 
 // Mobile Menu Component
-const MobileMenu = ({ isOpen, onClose }) => {
+const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const menuItems = ['Health', 'Ambition', 'Relationship', 'Money', 'Concept'];
   
   const menuAnimation = {
