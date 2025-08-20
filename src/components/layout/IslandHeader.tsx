@@ -199,6 +199,8 @@ const Logo = ({ isScrolled, isDarkMode, isMobile = false }: { isScrolled: boolea
 // Search Overlay Component
 const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
 
   useEffect(() => {
     if (isOpen) {
@@ -253,7 +255,7 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
             style={{
               width: '100%',
               maxWidth: '600px',
-              background: '#fff',
+              background: isDarkMode ? '#1a1a1a' : '#fff',
               borderRadius: '16px',
               boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
               overflow: 'hidden'
@@ -267,21 +269,22 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                   width: '32px',
                   height: '32px',
                   border: 'none',
-                  background: 'rgba(0, 0, 0, 0.1)',
+                  background: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
                   fontSize: '18px',
+                  color: isDarkMode ? '#fff' : '#000',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
                   e.currentTarget.style.transform = 'scale(1.1)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.1)';
+                  e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
                   e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
@@ -301,8 +304,8 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 fontSize: '18px',
                 background: 'transparent',
                 outline: 'none',
-                borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-                color: '#333'
+                borderBottom: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
+                color: isDarkMode ? '#fff' : '#333'
               }}
               autoFocus
             />
@@ -313,7 +316,7 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 <div style={{
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#666',
+                  color: isDarkMode ? '#999' : '#666',
                   marginBottom: '12px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px'
@@ -331,7 +334,7 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                       onClick={onClose}
                       style={{
                         padding: '12px 16px',
-                        background: 'rgba(0, 0, 0, 0.05)',
+                        background: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)',
                         borderRadius: '8px',
                         textAlign: 'center',
                         cursor: 'pointer',
@@ -340,11 +343,11 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                         color: 'inherit'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(0, 0, 0, 0.1)';
+                        e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
                         e.currentTarget.style.transform = 'translateY(-1px)';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(0, 0, 0, 0.05)';
+                        e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
                         e.currentTarget.style.transform = 'translateY(0)';
                       }}
                     >
@@ -359,7 +362,7 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 <div style={{
                   fontSize: '14px',
                   fontWeight: '600',
-                  color: '#666',
+                  color: isDarkMode ? '#999' : '#666',
                   marginBottom: '12px',
                   textTransform: 'uppercase',
                   letterSpacing: '0.5px'
@@ -372,12 +375,12 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                       key={index}
                       style={{
                         padding: '12px 0',
-                        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+                        borderBottom: isDarkMode ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)',
                         cursor: 'pointer',
                         transition: 'all 0.2s ease'
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(0, 0, 0, 0.02)';
+                        e.currentTarget.style.background = isDarkMode ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)';
                         e.currentTarget.style.margin = '0 -20px';
                         e.currentTarget.style.paddingLeft = '20px';
                         e.currentTarget.style.paddingRight = '20px';
@@ -393,13 +396,13 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                         fontSize: '16px',
                         fontWeight: '500',
                         marginBottom: '4px',
-                        color: '#333'
+                        color: isDarkMode ? '#fff' : '#333'
                       }}>
                         {title}
                       </div>
                       <div style={{
                         fontSize: '14px',
-                        color: '#666',
+                        color: isDarkMode ? '#999' : '#666',
                         lineHeight: '1.4'
                       }}>
                         毎日の習慣を見直して、より健康的な生活を送るための実践的なアドバイス...
@@ -418,6 +421,8 @@ const SearchOverlay = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
 
 // Mobile Menu Component
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
   const menuItems = ['Health', 'Ambition', 'Relationship', 'Money', 'Concept'];
   
   const menuAnimation = {
@@ -475,10 +480,10 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           exit="closed"
           variants={menuAnimation}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="fixed inset-0 z-50 bg-white"
+          className="fixed inset-0 z-50"
           style={{ 
             top: '60px',
-            background: 'rgba(255, 255, 255, 0.95)',
+            background: isDarkMode ? 'rgba(0, 0, 0, 0.95)' : 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(20px)',
           }}
           onClick={onClose}
@@ -499,7 +504,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                     onClick={onClose}
                     className="text-2xl font-medium tracking-wide"
                     style={{ 
-                      color: '#000',
+                      color: isDarkMode ? '#fff' : '#000',
                       textDecoration: 'none',
                       fontFamily: "'M PLUS 1p', sans-serif"
                     }}
@@ -511,17 +516,45 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             </nav>
             
             <div className="mt-16">
-              <div className="text-sm font-medium tracking-wider uppercase text-gray-600 mb-4">
+              <div className="text-sm font-medium tracking-wider uppercase mb-4"
+                style={{ color: isDarkMode ? '#999' : '#666' }}>
                 CONNECT
               </div>
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-700 hover:text-black transition-colors">
+                <a href="#" className="transition-colors"
+                  style={{ 
+                    color: isDarkMode ? '#ccc' : '#666'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#fff' : '#000';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#ccc' : '#666';
+                  }}>
                   <TwitterIcon />
                 </a>
-                <a href="#" className="text-gray-700 hover:text-black transition-colors">
+                <a href="#" className="transition-colors"
+                  style={{ 
+                    color: isDarkMode ? '#ccc' : '#666'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#fff' : '#000';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#ccc' : '#666';
+                  }}>
                   <InstagramIcon />
                 </a>
-                <a href="#" className="text-gray-700 hover:text-black transition-colors">
+                <a href="#" className="transition-colors"
+                  style={{ 
+                    color: isDarkMode ? '#ccc' : '#666'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#fff' : '#000';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = isDarkMode ? '#ccc' : '#666';
+                  }}>
                   <YouTubeIcon />
                 </a>
               </div>
