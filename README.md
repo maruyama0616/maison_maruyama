@@ -98,3 +98,4 @@ src/
 ## ライセンス
 
 © 2024 Maruyama. All rights reserved.
+# Deployment Trigger 2025年 8月 20日 水曜日 23:34:10    
