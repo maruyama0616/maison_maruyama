@@ -14,10 +14,12 @@ interface BlogPageProps {
 
 async function getPost(slug: string): Promise<Post | null> {
   try {
+    console.log('Fetching post with slug:', slug);
     const post = await sanityFetch<Post>({
       query: postQuery,
       params: { slug }
     });
+    console.log('Fetched post:', post);
     return post;
   } catch (error) {
     console.error('Error fetching post:', error);
@@ -167,11 +169,15 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = await params;
+  console.log('BlogPage component - slug:', slug);
   const post = await getPost(slug);
 
   if (!post) {
+    console.log('Post not found for slug:', slug);
     notFound();
   }
+  
+  console.log('Post found:', post.title);
 
   const relatedPosts = post.categories && post.categories.length > 0
     ? await getRelatedPosts(post.categories[0]._id, post._id)

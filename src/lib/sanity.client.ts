@@ -28,7 +28,7 @@ export async function sanityFetch<T>({
   query,
   params = {},
   preview = false,
-  revalidate = 60
+  revalidate = 0  // Disable caching for debugging
 }: SanityFetchOptions): Promise<T> {
   const client = getClient(preview);
   
