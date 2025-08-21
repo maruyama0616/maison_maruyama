@@ -282,7 +282,8 @@ export default async function BlogPage({ params }: BlogPageProps) {
       <section className="w-full section-spacing">
         <div className="page">
           <article className="max-w-3xl mx-auto">
-            <PortableText value={post.content} components={ptComponents} />
+            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+            <PortableText value={post.content as any} components={ptComponents} />
           </article>
 
           {/* Tags Section */}
