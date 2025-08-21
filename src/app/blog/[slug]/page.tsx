@@ -41,13 +41,8 @@ async function getRelatedPosts(categoryId: string, currentId: string): Promise<P
 // Portable Text component types
 interface PortableTextComponentProps {
   children?: React.ReactNode;
-  value?: {
-    _key?: string;
-    alt?: string;
-    code?: string;
-    language?: string;
-    href?: string;
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value?: any;
 }
 
 // Portable Text components using existing design patterns
@@ -88,35 +83,42 @@ const ptComponents = {
     )
   },
   types: {
-    image: ({ value }: PortableTextComponentProps) => (
-      <div className="my-6 md:my-8 radius-lg overflow-hidden image-clip-rounded"
-           style={{ backgroundColor: 'var(--island-background)' }}>
-        <Image
-          src={urlFor(value).width(800).height(450).url()}
-          alt={value.alt || ''}
-          width={800}
-          height={450}
-          className="w-full h-auto object-cover"
-        />
-        {value.alt && (
-          <p className="font-sans text-xs font-ultra-light text-center p-4"
-             style={{ color: 'var(--text-secondary)' }}>
-            {value.alt}
-          </p>
-        )}
-      </div>
-    ),
-    code: ({ value }: PortableTextComponentProps) => (
-      <div className="my-6 md:my-8">
-        <pre className="radius-lg card-spacing overflow-x-auto"
+    image: ({ value }: PortableTextComponentProps) => {
+      if (!value) return null;
+      return (
+        <div className="my-6 md:my-8 radius-lg overflow-hidden image-clip-rounded"
              style={{ backgroundColor: 'var(--island-background)' }}>
-          <code className="font-sans text-xs font-light"
-                style={{ color: 'var(--text-primary)' }}>
-            {value.code}
-          </code>
-        </pre>
-      </div>
-    )
+          <Image
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            src={urlFor(value as any).width(800).height(450).url()}
+            alt={value.alt || ''}
+            width={800}
+            height={450}
+            className="w-full h-auto object-cover"
+          />
+          {value.alt && (
+            <p className="font-sans text-xs font-ultra-light text-center p-4"
+               style={{ color: 'var(--text-secondary)' }}>
+              {value.alt}
+            </p>
+          )}
+        </div>
+      );
+    },
+    code: ({ value }: PortableTextComponentProps) => {
+      if (!value) return null;
+      return (
+        <div className="my-6 md:my-8">
+          <pre className="radius-lg card-spacing overflow-x-auto"
+               style={{ backgroundColor: 'var(--island-background)' }}>
+            <code className="font-sans text-xs font-light"
+                  style={{ color: 'var(--text-primary)' }}>
+              {value.code}
+            </code>
+          </pre>
+        </div>
+      );
+    }
   },
   marks: {
     strong: ({ children }: PortableTextComponentProps) => (
