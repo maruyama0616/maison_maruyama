@@ -29,8 +29,15 @@ export const postQuery = groq`
     title,
     slug,
     excerpt,
-    mainImage,
+    mainImage {
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
     content,
+    publishedAt,
     categories[]-> {
       _id,
       title,
@@ -40,6 +47,12 @@ export const postQuery = groq`
       _id,
       title,
       slug
+    },
+    "readTime": round(length(pt::text(content)) / 5 / 180),
+    "headings": content[_type == "block" && style in ["h1", "h2", "h3", "h4", "h5", "h6"]] {
+      _key,
+      "text": pt::text(@),
+      "level": pt::listItem(@.style)
     }
   }
 `;
@@ -97,6 +110,26 @@ export const postsByTagQuery = groq`
     },
     tags[]-> {
       _id,
+      title,
+      slug
+    }
+  }
+`;
+
+export const relatedPostsQuery = groq`
+  *[_type == "post" && $categoryId in categories[]._ref && _id != $currentId][0...3] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    mainImage {
+      asset->{
+        url
+      },
+      alt
+    },
+    publishedAt,
+    categories[]-> {
       title,
       slug
     }

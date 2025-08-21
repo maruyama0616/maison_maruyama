@@ -3,6 +3,7 @@ export interface SanityImage {
   asset: {
     _ref: string;
     _type: 'reference';
+    url?: string;
   };
   alt?: string;
 }
@@ -37,4 +38,13 @@ export interface Post {
   content: unknown[]; // Rich text content from Sanity
   categories: Category[] | null;
   tags: Tag[] | null;
+  publishedAt?: string;
+  readTime?: number;
+  headings?: Heading[];
+}
+
+export interface Heading {
+  _key: string;
+  text: string;
+  level: number;
 }

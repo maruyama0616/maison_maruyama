@@ -16,3 +16,23 @@ export const previewClient = createClient({
 });
 
 export const getClient = (preview?: boolean) => (preview ? previewClient : client);
+
+interface SanityFetchOptions {
+  query: string;
+  params?: Record<string, unknown>;
+  preview?: boolean;
+  revalidate?: number;
+}
+
+export async function sanityFetch<T>({
+  query,
+  params = {},
+  preview = false,
+  revalidate = 60
+}: SanityFetchOptions): Promise<T> {
+  const client = getClient(preview);
+  
+  return client.fetch(query, params, {
+    next: { revalidate }
+  });
+}
