@@ -174,7 +174,22 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   if (!post) {
     console.log('Post not found for slug:', slug);
-    notFound();
+    // For debugging, show a temporary message instead of 404
+    return (
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--page-background)' }}>
+        <div className="text-center">
+          <h1 className="font-serif text-xl mb-4" style={{ color: 'var(--text-primary)' }}>
+            記事が見つかりません
+          </h1>
+          <p className="font-sans text-sm" style={{ color: 'var(--text-secondary)' }}>
+            スラッグ: {slug}
+          </p>
+          <p className="font-sans text-sm mt-2" style={{ color: 'var(--text-secondary)' }}>
+            Sanityでデータが正しく設定されているか確認してください。
+          </p>
+        </div>
+      </div>
+    );
   }
   
   console.log('Post found:', post.title);
