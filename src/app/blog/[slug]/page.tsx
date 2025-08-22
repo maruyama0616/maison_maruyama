@@ -9,16 +9,21 @@ import { Post } from '@/types/sanity';
 import { urlFor } from '@/lib/sanity.image';
 import { PortableText } from '@portabletext/react';
 
+// Force dynamic rendering for this page
+export const dynamic = 'force-dynamic';
+
 interface BlogPageProps {
   params: Promise<{ slug: string }>;
 }
 
 async function getPost(slug: string): Promise<Post | null> {
   try {
+    console.log('Debugging: Fetching post with slug:', slug);
     const post = await sanityFetch<Post>({
       query: postQuery,
       params: { slug }
     });
+    console.log('Debugging: Post result:', post ? 'Found' : 'Not found');
     return post;
   } catch (error) {
     console.error('Error fetching post:', error);
@@ -111,8 +116,19 @@ const portableTextComponents = {
   }
 };
 
+export async function generateStaticParams() {
+  const posts = await sanityFetch<{ slug: { current: string } }[]>({
+    query: '*[_type == "post"] { slug }',
+  });
+  
+  return posts.map((post) => ({
+    slug: post.slug.current,
+  }));
+}
+
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const post = await getPost(slug);
 
   if (!post) {
@@ -136,7 +152,9 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 }
 
 export default async function BlogPage({ params }: BlogPageProps) {
-  const { slug } = await params;
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  console.log('Debugging: BlogPage called with slug:', slug);
   const post = await getPost(slug);
 
   if (!post) {
