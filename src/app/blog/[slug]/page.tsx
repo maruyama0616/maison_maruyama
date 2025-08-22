@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -14,12 +15,10 @@ interface BlogPageProps {
 
 async function getPost(slug: string): Promise<Post | null> {
   try {
-    console.log('Fetching post with slug:', slug);
     const post = await sanityFetch<Post>({
       query: postQuery,
       params: { slug }
     });
-    console.log('Fetched post:', post);
     return post;
   } catch (error) {
     console.error('Error fetching post:', error);
@@ -40,44 +39,34 @@ async function getRelatedPosts(categoryId: string, currentId: string): Promise<P
   }
 }
 
-// Portable Text component types
-interface PortableTextComponentProps {
-  children?: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value?: any;
-}
-
-// Portable Text components using existing design patterns
-const ptComponents = {
+// 既存デザインパターンを踏襲したPortable Textコンポーネント
+const portableTextComponents = {
   block: {
-    normal: ({ children }: PortableTextComponentProps) => (
-      <p className="font-sans text-sm font-light leading-relaxed text-spacing" 
+    normal: ({ children }: any) => (
+      <p className="font-sans text-sm font-light leading-relaxed mb-6"
          style={{ color: 'var(--text-primary)' }}>
         {children}
       </p>
     ),
-    h1: ({ children, value }: PortableTextComponentProps) => (
-      <h1 id={value?._key} 
-          className="font-serif text-lg small-caps font-light mb-8 md:mb-12 tracking-wider scroll-mt-24"
+    h1: ({ children }: any) => (
+      <h1 className="font-serif text-lg small-caps font-light mb-8 md:mb-12 tracking-wider"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h1>
     ),
-    h2: ({ children, value }: PortableTextComponentProps) => (
-      <h2 id={value?._key} 
-          className="font-serif text-base small-caps font-light mb-6 md:mb-8 tracking-wider scroll-mt-24"
+    h2: ({ children }: any) => (
+      <h2 className="font-serif text-base small-caps font-light mb-6 md:mb-8 tracking-wider"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h2>
     ),
-    h3: ({ children, value }: PortableTextComponentProps) => (
-      <h3 id={value?._key} 
-          className="font-sans text-sm font-light mb-4 md:mb-6 tracking-wide uppercase scroll-mt-24"
+    h3: ({ children }: any) => (
+      <h3 className="font-sans text-sm font-light mb-4 md:mb-6 tracking-wide uppercase"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h3>
     ),
-    blockquote: ({ children }: PortableTextComponentProps) => (
+    blockquote: ({ children }: any) => (
       <blockquote className="card-spacing radius-lg my-6 md:my-8 italic"
                   style={{ backgroundColor: 'var(--island-accent)', color: 'var(--text-secondary)' }}>
         {children}
@@ -85,55 +74,34 @@ const ptComponents = {
     )
   },
   types: {
-    image: ({ value }: PortableTextComponentProps) => {
+    image: ({ value }: any) => {
       if (!value) return null;
       return (
         <div className="my-6 md:my-8 radius-lg overflow-hidden image-clip-rounded"
              style={{ backgroundColor: 'var(--island-background)' }}>
           <Image
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            src={urlFor(value as any).width(800).height(450).url()}
+            src={urlFor(value).width(800).height(450).url()}
             alt={value.alt || ''}
             width={800}
             height={450}
             className="w-full h-auto object-cover"
           />
-          {value.alt && (
-            <p className="font-sans text-xs font-ultra-light text-center p-4"
-               style={{ color: 'var(--text-secondary)' }}>
-              {value.alt}
-            </p>
-          )}
-        </div>
-      );
-    },
-    code: ({ value }: PortableTextComponentProps) => {
-      if (!value) return null;
-      return (
-        <div className="my-6 md:my-8">
-          <pre className="radius-lg card-spacing overflow-x-auto"
-               style={{ backgroundColor: 'var(--island-background)' }}>
-            <code className="font-sans text-xs font-light"
-                  style={{ color: 'var(--text-primary)' }}>
-              {value.code}
-            </code>
-          </pre>
         </div>
       );
     }
   },
   marks: {
-    strong: ({ children }: PortableTextComponentProps) => (
+    strong: ({ children }: any) => (
       <strong className="font-sans font-light" style={{ color: 'var(--text-primary)' }}>
         {children}
       </strong>
     ),
-    em: ({ children }: PortableTextComponentProps) => (
+    em: ({ children }: any) => (
       <em className="font-sans font-ultra-light" style={{ color: 'var(--text-secondary)' }}>
         {children}
       </em>
     ),
-    link: ({ value, children }: PortableTextComponentProps) => (
+    link: ({ value, children }: any) => (
       <Link href={value?.href || '#'} 
             className="font-sans font-light hover-subtle transition-opacity"
             style={{ color: 'var(--text-primary)' }}>
@@ -169,30 +137,11 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogPage({ params }: BlogPageProps) {
   const { slug } = await params;
-  console.log('BlogPage component - slug:', slug);
   const post = await getPost(slug);
 
   if (!post) {
-    console.log('Post not found for slug:', slug);
-    // For debugging, show a temporary message instead of 404
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--page-background)' }}>
-        <div className="text-center">
-          <h1 className="font-serif text-xl mb-4" style={{ color: 'var(--text-primary)' }}>
-            記事が見つかりません
-          </h1>
-          <p className="font-sans text-sm" style={{ color: 'var(--text-secondary)' }}>
-            スラッグ: {slug}
-          </p>
-          <p className="font-sans text-sm mt-2" style={{ color: 'var(--text-secondary)' }}>
-            Sanityでデータが正しく設定されているか確認してください。
-          </p>
-        </div>
-      </div>
-    );
+    notFound();
   }
-  
-  console.log('Post found:', post.title);
 
   const relatedPosts = post.categories && post.categories.length > 0
     ? await getRelatedPosts(post.categories[0]._id, post._id)
@@ -208,7 +157,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
-      {/* Breadcrumb Navigation - Following existing pattern */}
+      {/* Breadcrumb - 既存パターン踏襲 */}
       <section className="w-full pt-8 pb-4">
         <div className="page">
           <nav className="flex items-center gap-2 font-sans text-xs font-ultra-light tracking-wide"
@@ -220,21 +169,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
             <Link href="/blog" className="hover-subtle transition-opacity uppercase">
               BLOG
             </Link>
-            {post.categories && post.categories.length > 0 && (
-              <>
-                <span>•</span>
-                <span className="uppercase">{post.categories[0].title}</span>
-              </>
-            )}
+            <span>•</span>
+            <span className="uppercase" style={{ color: 'var(--text-primary)' }}>
+              ARTICLE
+            </span>
           </nav>
         </div>
       </section>
 
-      {/* Article Header - Using existing typography patterns */}
+      {/* Article Header - 既存のトップページセクションスタイル踏襲 */}
       <section className="w-full section-spacing">
         <div className="page">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Category Tags */}
+            {/* Category Tags - 既存パターン */}
             {post.categories && post.categories.length > 0 && (
               <div className="mb-6 md:mb-8">
                 {post.categories.map((category) => (
@@ -249,28 +196,17 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </div>
             )}
 
-            {/* Article Title */}
+            {/* Title - 既存のセクションタイトルパターン踏襲 */}
             <h1 className="font-serif text-xl md:text-2xl small-caps font-light mb-8 md:mb-12 tracking-wider leading-tight"
                 style={{ color: 'var(--text-primary)' }}>
               {post.title}
             </h1>
 
-            {/* Article Meta */}
+            {/* Meta Information */}
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 font-sans text-xs font-ultra-light tracking-wide mb-8 md:mb-12"
                  style={{ color: 'var(--text-secondary)' }}>
-              <span>
-                {formatDate(post.publishedAt || post._createdAt)}
-              </span>
-              {post._updatedAt && (
-                <span>
-                  更新: {formatDate(post._updatedAt)}
-                </span>
-              )}
-              {post.readTime && (
-                <span>
-                  {post.readTime}分で読める
-                </span>
-              )}
+              <span>{formatDate(post.publishedAt || post._createdAt)}</span>
+              {post.readTime && <span>{post.readTime}分で読める</span>}
             </div>
 
             {/* Excerpt */}
@@ -281,7 +217,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
               </p>
             )}
 
-            {/* Main Image */}
+            {/* Main Image - 既存のimage-clip-roundedパターン */}
             {post.mainImage && (
               <div className="aspect-[16/9] w-full radius-lg overflow-hidden image-clip-rounded hover-subtle transition-opacity"
                    style={{ backgroundColor: 'var(--island-background)' }}>
@@ -299,23 +235,25 @@ export default async function BlogPage({ params }: BlogPageProps) {
         </div>
       </section>
 
-      {/* Article Content */}
+      {/* Article Content - 既存のセクションスペーシング踏襲 */}
       <section className="w-full section-spacing">
         <div className="page">
           <article className="max-w-3xl mx-auto">
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-            <PortableText value={post.content as any} components={ptComponents} />
+            <PortableText value={post.content as any} components={portableTextComponents} />
           </article>
+        </div>
+      </section>
 
-          {/* Tags Section */}
-          {post.tags && post.tags.length > 0 && (
-            <div className="max-w-3xl mx-auto mt-12 md:mt-16 pt-8 border-t"
-                 style={{ borderColor: 'var(--island-accent)' }}>
-              <h3 className="font-serif text-sm small-caps font-light mb-6 tracking-wider"
+      {/* Tags Section - 既存パターン踏襲 */}
+      {post.tags && post.tags.length > 0 && (
+        <section className="w-full section-spacing">
+          <div className="page">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-serif text-sm small-caps font-light mb-6 tracking-wider text-center"
                   style={{ color: 'var(--text-primary)' }}>
                 TAGS
-              </h3>
-              <div className="flex flex-wrap gap-2">
+              </h2>
+              <div className="flex flex-wrap gap-2 justify-center">
                 {post.tags.map((tag) => (
                   <span
                     key={tag._id}
@@ -327,11 +265,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 ))}
               </div>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
-      {/* Related Posts - Following existing grid pattern */}
+      {/* Related Posts - 既存のグリッドパターン完全踏襲 */}
       {relatedPosts.length > 0 && (
         <section className="w-full section-spacing">
           <div className="page">
@@ -367,10 +305,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
                         style={{ color: 'var(--text-primary)' }}>
                       {relatedPost.title}
                     </h3>
-                    <p className="font-sans text-xs font-ultra-light leading-relaxed"
-                       style={{ color: 'var(--text-secondary)' }}>
-                      {relatedPost.excerpt}
-                    </p>
+                    {relatedPost.excerpt && (
+                      <p className="font-sans text-xs font-ultra-light leading-relaxed"
+                         style={{ color: 'var(--text-secondary)' }}>
+                        {relatedPost.excerpt}
+                      </p>
+                    )}
                   </Link>
                 </article>
               ))}
