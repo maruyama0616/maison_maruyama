@@ -11,6 +11,7 @@ import { PortableText } from '@portabletext/react';
 
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
+export const revalidate = 0; // Disable all caching for debugging
 
 interface BlogPageProps {
   params: Promise<{ slug: string }>;

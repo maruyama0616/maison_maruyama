@@ -5,6 +5,8 @@ export const client = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2024-01-01',
   useCdn: false, // Set to true in production for faster, cached responses
+  perspective: 'published', // Only fetch published documents
+  stega: false, // Disable stega encoding
 });
 
 export const previewClient = createClient({
