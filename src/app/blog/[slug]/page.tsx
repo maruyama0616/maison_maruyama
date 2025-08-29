@@ -55,19 +55,19 @@ const portableTextComponents = {
       </p>
     ),
     h1: ({ children }: any) => (
-      <h1 className="font-serif text-lg small-caps font-light mb-8 md:mb-12 tracking-wider"
+      <h1 className="font-serif text-xl md:text-2xl font-light mb-8 md:mb-12 tracking-wider mt-8 md:mt-12"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="font-serif text-base small-caps font-light mb-6 md:mb-8 tracking-wider"
+      <h2 className="font-serif text-lg md:text-xl font-light mb-6 md:mb-8 tracking-wider mt-8 md:mt-10"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="font-sans text-sm font-light mb-4 md:mb-6 tracking-wide uppercase"
+      <h3 className="font-sans text-base font-medium mb-4 md:mb-6 tracking-wide mt-6 md:mt-8"
           style={{ color: 'var(--text-primary)' }}>
         {children}
       </h3>
@@ -77,6 +77,32 @@ const portableTextComponents = {
                   style={{ backgroundColor: 'var(--island-accent)', color: 'var(--text-secondary)' }}>
         {children}
       </blockquote>
+    )
+  },
+  list: {
+    bullet: ({ children }: any) => (
+      <ul className="font-sans text-sm font-light leading-relaxed mb-6 ml-6 space-y-2"
+          style={{ color: 'var(--text-primary)' }}>
+        {children}
+      </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="font-sans text-sm font-light leading-relaxed mb-6 ml-6 space-y-2"
+          style={{ color: 'var(--text-primary)', listStyleType: 'decimal' }}>
+        {children}
+      </ol>
+    )
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li className="relative pl-2" style={{ listStyleType: 'disc' }}>
+        {children}
+      </li>
+    ),
+    number: ({ children }: any) => (
+      <li className="relative pl-2">
+        {children}
+      </li>
     )
   },
   types: {
