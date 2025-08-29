@@ -5,40 +5,16 @@ import { client } from '@/lib/sanity.client';
 import { postsQuery } from '@/lib/sanity.queries';
 import { Post } from '@/types/sanity';
 
-const popularPosts = [
-  {
-    id: '1',
-    title: '健康的なライフスタイルの作り方',
-    excerpt: '毎日の小さな習慣が大きな変化をもたらす方法について',
-    imageUrl: '',
-    slug: 'healthy-lifestyle',
-    category: 'health'
-  },
-  {
-    id: '2',
-    title: '目標達成のための戦略',
-    excerpt: 'ambitionを実現するための具体的なステップとマインドセット',
-    imageUrl: '',
-    slug: 'goal-achievement',
-    category: 'ambition'
-  },
-  {
-    id: '3',
-    title: '良好な人間関係を築く方法',
-    excerpt: 'コミュニケーションスキルと信頼関係の構築について',
-    imageUrl: '',
-    slug: 'building-relationships',
-    category: 'relationship'
-  },
-  {
-    id: '4',
-    title: '賢いお金の管理術',
-    excerpt: '投資と節約のバランスを取った財務戦略',
-    imageUrl: '',
-    slug: 'money-management',
-    category: 'money'
+async function getPopularPosts(): Promise<Post[]> {
+  try {
+    const posts = await client.fetch(postsQuery);
+    // 人気記事として最新記事を使用（実際の実装では閲覧数などでソート）
+    return posts.slice(0, 4);
+  } catch (error) {
+    console.error('Failed to fetch popular posts:', error);
+    return [];
   }
-];
+}
 
 async function getLatestPosts(): Promise<Post[]> {
   try {
@@ -52,6 +28,8 @@ async function getLatestPosts(): Promise<Post[]> {
 
 export default async function Home() {
   const latestPosts = await getLatestPosts();
+  const popularPosts = await getPopularPosts();
+  
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Popular Posts Carousel */}
@@ -61,9 +39,18 @@ export default async function Home() {
               style={{ color: 'var(--text-primary)' }}>
             POPULAR POSTS
           </h2>
-          <div className="popular-wrapper fade-in-delay-1">
-            <Carousel items={popularPosts} />
-          </div>
+          {popularPosts.length > 0 ? (
+            <div className="popular-wrapper fade-in-delay-1">
+              <Carousel items={popularPosts} />
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="font-sans text-sm font-light"
+                 style={{ color: 'var(--text-secondary)' }}>
+                記事がまだありません
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

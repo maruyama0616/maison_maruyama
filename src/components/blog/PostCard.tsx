@@ -17,7 +17,7 @@ const PostCard = ({ post }: PostCardProps) => {
   return (
     <article className="group">
       <Link href={`/blog/${post.slug.current}`}>
-        <div className="relative aspect-[16/9] w-full radius-lg overflow-hidden hover-subtle transition-opacity image-clip-rounded"
+        <div className="relative aspect-[16/9] w-full radius-lg overflow-hidden hover-subtle transition-opacity image-clip-rounded mb-4 md:mb-6"
              style={{ backgroundColor: 'var(--island-background)' }}>
           {post.mainImage ? (
             <Image
@@ -36,6 +36,44 @@ const PostCard = ({ post }: PostCardProps) => {
               </span>
             </div>
           )}
+        </div>
+        
+        {/* Post Info */}
+        <div className="space-y-2">
+          {/* Categories */}
+          {post.categories && post.categories.length > 0 && (
+            <div className="flex gap-2">
+              {post.categories.map((category) => (
+                <span
+                  key={category._id}
+                  className="inline-block font-sans text-xs font-ultra-light tracking-wider uppercase px-2 py-1 radius-sm"
+                  style={{ backgroundColor: 'var(--island-accent)', color: 'var(--text-secondary)' }}
+                >
+                  {category.title}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          {/* Title */}
+          <h3 className="font-sans text-sm font-light tracking-wide group-hover:opacity-70 transition-opacity"
+              style={{ color: 'var(--text-primary)' }}>
+            {post.title}
+          </h3>
+          
+          {/* Excerpt */}
+          {post.excerpt && (
+            <p className="font-sans text-xs font-ultra-light leading-relaxed"
+               style={{ color: 'var(--text-secondary)' }}>
+              {post.excerpt}
+            </p>
+          )}
+          
+          {/* Date */}
+          <p className="font-sans text-xs font-ultra-light tracking-wide"
+             style={{ color: 'var(--text-secondary)' }}>
+            {formattedDate}
+          </p>
         </div>
       </Link>
     </article>

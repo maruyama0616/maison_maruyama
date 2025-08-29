@@ -2,18 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-
-interface CarouselItem {
-  id: string;
-  title: string;
-  excerpt: string;
-  imageUrl: string;
-  slug: string;
-  category: string;
-}
+import Image from 'next/image';
+import { Post } from '@/types/sanity';
+import { urlFor } from '@/lib/sanity.image';
 
 interface CarouselProps {
-  items: CarouselItem[];
+  items: Post[];
   autoPlay?: boolean;
   autoPlayInterval?: number;
 }
@@ -93,14 +87,17 @@ export default function Carousel({ items, autoPlay = true, autoPlayInterval = 50
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {items.map((item, index) => (
-          <div key={item.id} className="w-full flex-shrink-0">
-            <Link href={`/${item.category}/${item.slug}`} className="block group">
+          <div key={item._id} className="w-full flex-shrink-0">
+            <Link href={`/blog/${item.slug.current}`} className="block group">
               <div className="relative aspect-[16/9] w-full overflow-hidden radius-lg"
                    style={{ backgroundColor: 'var(--island-background)' }}>
-                {item.imageUrl ? (
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${item.imageUrl})` }}
+                {item.mainImage ? (
+                  <Image
+                    src={urlFor(item.mainImage).width(800).height(450).url()}
+                    alt={item.mainImage.alt || item.title}
+                    fill
+                    sizes="100vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center"
@@ -111,6 +108,20 @@ export default function Carousel({ items, autoPlay = true, autoPlayInterval = 50
                     </span>
                   </div>
                 )}
+                
+                {/* Overlay with title and excerpt */}
+                <div className="absolute inset-0 bg-black/20 flex items-end p-6 md:p-8">
+                  <div className="text-white">
+                    <h3 className="font-sans text-lg md:text-xl font-light mb-2 tracking-wide">
+                      {item.title}
+                    </h3>
+                    {item.excerpt && (
+                      <p className="font-sans text-sm md:text-base font-ultra-light leading-relaxed opacity-90">
+                        {item.excerpt}
+                      </p>
+                    )}
+                  </div>
+                </div>
               </div>
             </Link>
           </div>
