@@ -8,6 +8,7 @@ import { postQuery, relatedPostsQuery } from '@/lib/sanity.queries';
 import { Post } from '@/types/sanity';
 import { urlFor } from '@/lib/sanity.image';
 import { PortableText } from '@portabletext/react';
+import AmazonCard from '@/components/blog/AmazonCard';
 
 // Force dynamic rendering for this page
 export const dynamic = 'force-dynamic';
@@ -133,13 +134,35 @@ const portableTextComponents = {
         {children}
       </em>
     ),
-    link: ({ value, children }: any) => (
-      <Link href={value?.href || '#'} 
-            className="font-sans font-light hover-subtle transition-opacity"
-            style={{ color: 'var(--text-primary)' }}>
-        {children}
-      </Link>
-    )
+    link: ({ value, children }: any) => {
+      const href = value?.href || '#';
+      
+      // Amazonリンクを検知してカード表示
+      if (href.includes('amzn.to') || href.includes('amazon.co.jp') || href.includes('amazon.com')) {
+        // childrenからテキストを抽出してタイトルと価格を分離
+        const fullText = children?.toString() || '';
+        const priceMatch = fullText.match(/(\d{1,3}(,\d{3})*円)/);
+        const title = fullText.replace(/amzn\.to.*?(?=\(|$)/, '').replace(/\([^)]*\).*$/, '').trim();
+        const price = priceMatch ? priceMatch[0] : undefined;
+        
+        return (
+          <AmazonCard
+            url={href}
+            title={title || 'Amazon商品'}
+            price={price}
+          />
+        );
+      }
+      
+      // 通常のリンク
+      return (
+        <Link href={href} 
+              className="font-sans font-light hover-subtle transition-opacity"
+              style={{ color: 'var(--text-primary)' }}>
+          {children}
+        </Link>
+      );
+    }
   }
 };
 
