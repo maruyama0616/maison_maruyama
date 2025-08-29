@@ -48,12 +48,7 @@ export const postQuery = groq`
       title,
       slug
     },
-    "readTime": round(length(pt::text(content)) / 5 / 180),
-    "headings": content[_type == "block" && style in ["h1", "h2", "h3", "h4", "h5", "h6"]] {
-      _key,
-      "text": pt::text(@),
-      "level": pt::listItem(@.style)
-    }
+    "readTime": round(length(pt::text(content)) / 5 / 180)
   }
 `;
 
