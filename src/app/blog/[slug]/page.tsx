@@ -178,7 +178,12 @@ export default async function BlogPage({ params }: BlogPageProps) {
     <div className="min-h-screen" style={{ backgroundColor: 'var(--page-background)' }}>
       {/* Breadcrumb - 既存パターン踏襲 */}
       <section className="w-full pt-8 pb-4">
-        <div className="page">
+        <div style={{ 
+          width: '100%', 
+          maxWidth: '800px', 
+          margin: '0 auto', 
+          padding: '0 24px' 
+        }}>
           <nav className="flex items-center gap-2 font-sans text-xs font-ultra-light tracking-wide"
                style={{ color: 'var(--text-secondary)' }}>
             <Link href="/" className="hover-subtle transition-opacity uppercase">
@@ -198,8 +203,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Article Header - 既存のトップページセクションスタイル踏襲 */}
       <section className="w-full section-spacing">
-        <div className="page">
-          <div className="max-w-4xl mx-auto text-center">
+        <div style={{ 
+          width: '100%', 
+          maxWidth: '800px', 
+          margin: '0 auto', 
+          padding: '0 24px',
+          textAlign: 'center'
+        }}>
             {/* Category Tags - 既存パターン */}
             {post.categories && post.categories.length > 0 && (
               <div className="mb-6 md:mb-8">
@@ -250,7 +260,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 />
               </div>
             )}
-          </div>
         </div>
       </section>
 
