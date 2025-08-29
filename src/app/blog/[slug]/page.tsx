@@ -257,8 +257,10 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Article Content - 既存のセクションスペーシング踏襲 */}
       <section className="w-full section-spacing">
         <div className="page">
-          <article className="max-w-3xl mx-auto">
-            <PortableText value={post.content as any} components={portableTextComponents} />
+          <article className="max-w-3xl mx-auto text-center">
+            <div className="text-left">
+              <PortableText value={post.content as any} components={portableTextComponents} />
+            </div>
           </article>
         </div>
       </section>
