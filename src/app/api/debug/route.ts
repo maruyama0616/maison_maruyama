@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     // Test basic connectivity with sanityFetch
     const allPosts = await sanityFetch({
       query: '*[_type == "post"] { _id, title, slug }',
-    });
+    }) as { _id: string; title: string; slug: { current: string } }[];
 
     // Test specific slug query
     const specificPost = await sanityFetch({
