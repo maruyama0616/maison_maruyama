@@ -256,11 +256,14 @@ export default async function BlogPage({ params }: BlogPageProps) {
 
       {/* Article Content - 既存のセクションスペーシング踏襲 */}
       <section className="w-full section-spacing">
-        <div className="w-full max-w-4xl mx-auto px-6 md:px-8">
-          <article className="max-w-2xl mx-auto">
-            <div className="text-left">
-              <PortableText value={post.content as any} components={portableTextComponents} />
-            </div>
+        <div style={{ 
+          width: '100%', 
+          maxWidth: '800px', 
+          margin: '0 auto', 
+          padding: '0 24px' 
+        }}>
+          <article style={{ textAlign: 'left' }}>
+            <PortableText value={post.content as any} components={portableTextComponents} />
           </article>
         </div>
       </section>
@@ -268,8 +271,13 @@ export default async function BlogPage({ params }: BlogPageProps) {
       {/* Tags Section - 既存パターン踏襲 */}
       {post.tags && post.tags.length > 0 && (
         <section className="w-full section-spacing">
-          <div className="w-full max-w-4xl mx-auto px-6 md:px-8">
-            <div className="max-w-2xl mx-auto text-center">
+          <div style={{ 
+            width: '100%', 
+            maxWidth: '800px', 
+            margin: '0 auto', 
+            padding: '0 24px',
+            textAlign: 'center'
+          }}>
               <h2 className="font-serif text-sm small-caps font-light mb-6 tracking-wider"
                   style={{ color: 'var(--text-primary)' }}>
                 TAGS
@@ -285,7 +293,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
                   </span>
                 ))}
               </div>
-            </div>
           </div>
         </section>
       )}
