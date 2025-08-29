@@ -49,7 +49,7 @@ async function getRelatedPosts(categoryId: string, currentId: string): Promise<P
 const portableTextComponents = {
   block: {
     normal: ({ children }: any) => (
-      <p className="font-sans text-sm font-light leading-relaxed mb-6"
+      <p className="font-sans text-base font-light leading-relaxed mb-6"
          style={{ color: 'var(--text-primary)' }}>
         {children}
       </p>
